@@ -1,0 +1,89 @@
+The information stored in the web storage isn't sent to the web server as opposed to the cookies where data sent to the server with every request. Also, where cookies let you store a small amount of data (nearly 4KB), the web storage allows you to store up to 5MB of data.
+
+There are two types of web storage, which differ in scope and lifetime:
+
+Local storage — The local storage uses the localStorage object to store data for your entire website on a permanent basis. That means the stored local data will be available on the next day, the next week, or the next year unless you remove it.
+
+Session storage — The session storage uses the sessionStorage object to store data on a temporary basis, for a single browser window or tab. The data disappears when session ends i.e. when the user closes that browser window or tab.
+---------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Storing Data with HTML5 Local Storage</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+// Check if the localStorage object exists
+if(localStorage) {
+	$(document).ready(function() {
+		$(".save").click(function() {
+			// Get input name
+			var firstName = $("#firstName").val();
+			
+			// Store data
+    		localStorage.setItem("first_name", firstName);
+			alert("Your first name is saved.");
+		});
+		$(".access").click(function() {
+			// Retrieve data
+    		alert("Hi, " + localStorage.getItem("first_name"));
+		});
+	});
+} else {
+    alert("Sorry, your browser do not support local storage.");
+}
+</script>
+</head>
+<body>
+    <form>
+    	<label>First Name: <input type="text" id="firstName"></label>
+        <button type="button" class="save">Save Name</button>
+        <button type="button" class="access">Get Name</button>
+    </form>
+</body>
+</html>
+-------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Storing Data with HTML5 Session Storage</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+// Check if the localStorage object exists
+if(localStorage) {
+	$(document).ready(function() {
+		$(".save").click(function() {
+			// Get input name
+			var lastName = $("#lastName").val();
+			
+			// Store data
+    		sessionStorage.setItem("last_name", lastName);
+			alert("Your last name is saved.");
+		});
+		$(".access").click(function() {
+			// Retrieve data
+    		alert("Hi, " + localStorage.getItem("first_name") + " " + sessionStorage.getItem("last_name"));
+		});
+	});
+} else {
+    alert("Sorry, your browser do not support local storage.");
+}
+</script>
+</head>
+<body>
+    <form>
+    	<label>Last Name: <input type="text" id="lastName"></label>
+        <button type="button" class="save">Save Name</button>
+        <button type="button" class="access">Get Name</button>
+    </form>
+</body>
+</html>
+--------------------------------------------------------------
+*
+localStorage.setItem(key, value) stores the value associated with a key.
+localStorage.getItem(key) retrieves the value associated with the key.
+You can also remove a particular item from the storage if it exists, by passing the key name to the removeItem() method, like localStorage.removeItem("first_name").
+
+However, if you want to remove the complete storage use the clear() method, like localStorage.clear(). The clear() method takes no arguments, and simply clears all key/value pairs from localStorage at once, so think carefully before you using it.
+-----------------------------------------------------------------------------
