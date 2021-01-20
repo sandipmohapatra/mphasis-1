@@ -1,13 +1,13 @@
 <html>
 <body>
-Enter name: <input type="text" id="txt" onkeyup="manage(this)" /></br>
-Enter address: <input type="text" id="txt1" onkeyup="manage(this)" /></br>
-Enter Email: <input type="text" id="txt2" onkeyup="manage(this)" /></br>
+Enter name: <input type="text" id="txt" onkeyup="manage()" /></br>
+Enter address: <input type="text" id="txt1" onkeyup="manage()" /></br>
+Enter Email: <input type="text" id="txt2" onkeyup="manage()" /></br>
 
     <input type="submit" id="btSubmit" disabled />
 </body>
 <script>
-    function manage(txt) {
+    function manage() {
         var bt = document.getElementById('btSubmit');
         if (txt.value != ''&&txt1.value != ''&&txt2.value != '') 
 {
