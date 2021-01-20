@@ -1,40 +1,16 @@
-<!--<html>
-<head>
-<title>How to enable or disable input using JavaScript</title>
-</head>
-
-<body>
-
-<h2>Enabling and Disabling text field using JavaScript</h2>
-
-<form id="registration-form">
-Enter your name: <input type="text" id="name">
-</form>
-
-<button onclick="disable()">Disable the text field</button>
-<button onclick="enable()">Enable the text field</button>
-
-<script>
-function disable() {
-document.getElementById("name").disabled = true;
-}
-function enable() {
-document.getElementById("name").disabled = false;
-}
-</script>
-
-</body>
-</html> -->
-
 <html>
 <body>
-    <input type="text" id="txt" onkeyup="manage(this)" />
+Enter name: <input type="text" id="txt" onkeyup="manage(this)" /></br>
+Enter address: <input type="text" id="txt1" onkeyup="manage(this)" /></br>
+Enter Email: <input type="text" id="txt2" onkeyup="manage(this)" /></br>
+
     <input type="submit" id="btSubmit" disabled />
 </body>
 <script>
     function manage(txt) {
         var bt = document.getElementById('btSubmit');
-        if (txt.value != '') {
+        if (txt.value != ''&&txt1.value != ''&&txt2.value != '') 
+{
             bt.disabled = false;
         }
         else {
