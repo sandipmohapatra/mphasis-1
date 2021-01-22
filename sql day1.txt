@@ -14,8 +14,23 @@ Data types:-
 -------------------------------------------------
 1)Arithmatic operator:-  
 + , -,*,/
+
+
+select empno,name,salary+1000 as salaryBonus from mphasis183;//temporary 
+
+select empno,name,salary-1000 as salaryReduction from mphasis183;
+
+select empno,name,salary/30 as perDaySalary from mphasis183;
+
+select empno,name,salary*12 as AnualSalary from mphasis183;
 -----------------------------------------------
 2)comparison operator :- =,>=,<= ,>,<,!=(not equal to)
+select * from mphasis183 where salary=23000;
+select * from mphasis183 where salary>=23000;
+select * from mphasis183 where salary<=23000;
+select * from mphasis183 where salary>23000;
+select * from mphasis183 where salary<24000;
+select * from mphasis183 where salary!=23000;
 -----------------------------------------------------------
 3)between and, not between ,in,not in,like 
 -----------------------------------------------------------------
