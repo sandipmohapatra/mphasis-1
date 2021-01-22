@@ -33,6 +33,29 @@ select * from mphasis183 where salary<24000;
 select * from mphasis183 where salary!=23000;
 -----------------------------------------------------------
 3)between and, not between ,in,not in,like 
+
+=>select * from emp where sal between 2000 and 4000;
+					      
+=>select * from emp where deptno in(10,20);
+				                      
+=>
+select name from mphasis183 where salary>=21000 and name like '%p';
+select name from mphasis183 where salary>=21000 and name like 's%';
+select name from mphasis183 where salary>=21000 and name like '%a';
+select name from mphasis183 where salary>=21000 or name like '%p';
+select name from mphasis183 where salary>=21000 and name like '_a%';
+select name from mphasis183 where salary>=21000 and name like '__n%';
+
+=>select name from student where name like '_i%';
+
+=>select name from student where name like '__r%';					     
+ =>select * from emp where sal>=1500 and sal<=2500;
+					     
+ =>select * from emp where sal between 1500 and 2500;
+
+=>select empname,empcode,dob from employee1 where phoneno is null;
+
+=>select * from student where salary is null;
 -----------------------------------------------------------------
 syntax for creating table 
 -------------------------------------
