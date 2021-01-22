@@ -147,6 +147,21 @@ constraints
 4)check :- we can limit a value to a column. (example salary should be greater than 15000.)
 
 5)foreign key :- you can link a table column with another table column which is having primary key.
+------------------------------------------------------------
+create table mphasis183
+(empno number primary key,
+name varchar2(30) not null,
+address varchar2(30) unique,
+salary number check (salary > 18000));
+
+insert into mphasis183 values(103,'prasanna','pune',28500);
+drop table mphasis183;
+delete mphasis183 where empno=101;
+select * from mphasis183;
+create table transaction(empno number references mphasis183,department varchar2(30),loc varchar2(30));
+select * from transaction;
+insert into transaction values(104,'sales','pune');
+
 
 ----------------------------------------------------------------------------------------------
 Join is used to join 2 or more tables 
