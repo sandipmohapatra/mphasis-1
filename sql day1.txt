@@ -1,4 +1,4 @@
-Sql :- structure query language
+             Sql :- structure query language
 ----------------------------------------------
 Data types:-
 ----------------------
@@ -198,6 +198,23 @@ Date Function
 ------------------------
 it is stored as a number in the database and it can be added or subtracted from a date the numbers.
 
+select sysdate from dual;
+select * from dual;
+select months_between('28-mar-2019','28-feb-2019') from dual;
+select last_day(sysdate)from dual;
+select last_day('02-feb-2021')from dual;
+select to_char(sysdate,'DD Month yyyy HH:MI:SS AM AD') from dual;
+select to_char(sysdate,'DD Month yyyy HH:MM') from dual;
+select to_char(sysdate,'DD Mon yy HH:MM') from dual;
+select to_char(sysdate,'DD Mon yy') from dual;
+select to_char(sysdate,'Day') from dual;
+select to_char(sysdate,'Month') from dual;
+select to_char(sysdate,'year') from dual;
+select to_char(sysdate,'yyyy') from dual;
+SELECT NEXT_DAY(SYSDATE, 'SUN') FROM DUAL;
+select sysdate+1 from dual;
+select sysdate-2 from dual;
+select sysdate+2 from dual;
 -------------------------------
 sql functions 
 -------------------
