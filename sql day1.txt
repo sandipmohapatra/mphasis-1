@@ -234,8 +234,33 @@ select dept from mphasisemp group by dept having min(salary)>=23000;
 
 
 ------------------------------------------------------------------------------------------------------------
-https://github.com/sandipmohapatra/MPHASIS183
+group by function
+----------------------
+select * from mphasis183;
 
+alter table mphasis183 add dept varchar2(30);
+
+select * from mphasis183;
+
+insert into mphasis183(empno,name,address,salary) values(105,'sunil','bang',24000);
+
+update mphasis183 set dept='dev' where empno in(104,105);
+
+aggregate funtion
+--------------------
+SELECT COUNT(empno),dept FROM mphasis183 GROUP BY dept;
+SELECT sum(salary),dept FROM mphasis183 GROUP BY dept;
+SELECT avg(salary),dept FROM mphasis183 GROUP BY dept;
+SELECT round(avg(salary),2),dept FROM mphasis183 GROUP BY dept;
+SELECT max(salary),dept FROM mphasis183 GROUP BY dept;
+SELECT min(salary),dept FROM mphasis183 GROUP BY dept;
+
+we will use having clause in place of where clause 
+----------------------------------------------------------- 
+select dept from mphasis183 group by dept having min(salary) >= 23000;
+
+select dept from mphasis183 group by dept having max(salary) >= 23000;
+------------------------------------------------------------------------------
 -------------------------------------------------------------------
 Assignment-1
 --------------------------
