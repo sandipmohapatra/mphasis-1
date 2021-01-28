@@ -1,0 +1,70 @@
+Angular 8/9/10
+--------------------------
+1)Angular is an open source,cross platform,
+2)it provides end to end solution for building,debugging,testing and deploying.
+3)it provides testing framework like jasmine,karma,protractor.
+4)language used for angular is typescript.It support oops.
+5)Framework supported are MVC,MVVM
+6)it is also used for cross flatform mobile and web appliaction.
+7)it is used for SPA (single page application) .
+8)it has high speed and performance is better as compared to older technolgy 
+used webpages.
+9)Angular use AOT compiler.[Ahead-of-time].
+*it converts typescript code into efficient javascript code before building phase .
+before browser downloads and runs that code.
+It provides faster rendering.
+10)Previous version used JIT compiler [just-in-time]
+*it compiles your code after the page is loaded into the browser.   
+---------------------------------------------------------------------------------------------
+App folder
+--------------------
+1)app.component.html-------------Presentation(View)
+2)app.component.ts ----------------Logic
+3)app.component.css----------------styles
+4)app.component.spec.tc-----------Testing
+-----------------------------------------------------------------
+app.module.ts
+----------------------
+1)it contains the list of files used in your project.
+2)every modules or library that you want to use in your project should be configured 
+in app.module.ts
+3)In a project there will ne many folder each folder will have .html,.css,.ts,.spec.tc
+but only one app.module.ts
+--------------------------------------
+1)NgModule({}) :- information about your application provided to complier.
+2)declaration :- registers your component.//components are classes in Angular.
+3)imports:- registers your modules.
+4)provider:- registers your services.//functions 
+5)bootstrap:-specify the component to start with.
+------------------------------------------------------------------------------
+@Component :-
+----------------------
+1)It is derived from "Component" base of "@angular/core" library.
+2)every component in angular is comprises of presentation,logic and styles.
+3)logic is written in typescipt which is compiled into javascript.
+4)@Compoment ({property:value,property:value})
+5)@Component() Decorator that marks a class as an Angular component. and provides configuration metadata that determines how the component should be processed,instantiated and used at runtime.
+*how it will function :- feedback,contact,registration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
