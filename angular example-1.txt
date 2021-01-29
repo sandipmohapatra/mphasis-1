@@ -7,12 +7,23 @@ import { Component } from '@angular/core';
   <p>Hello my email is {{email}}</p>
   <p>Hello my address is {{address.street}} {{address.loc}} 
   {{address.state}}{{address.city}}</p>
-<p><Button (click)="sayName()">Say My Details</Button></p> `
+<p><Button (click)="sayName()">Say My Details</Button></p> 
+<p><Button (click)="sayDetails()">Say My Profile</Button></p> 
+<h3>My Hobbies are </h3>{{hobbies}}
+<h3>My Daily Foods are </h3>
+<ul>
+<li *ngFor="let food of foods">
+{{food}}
+</li>
+</ul>
+`
 })
 export class TestComponent {
 name:string;
 email:string;
 address:address;
+hobbies:string[]
+foods:string[];
   constructor() 
   {
 this.name='Sandip Mohapatra';
@@ -24,12 +35,18 @@ this.address=
   state:'Karnataka',
   city:'Bangalore'
 }
+this.hobbies=['music','cricket','football','movies','sports'];
+this.foods=['Biryani','rice and dal','noodles','ice-cream'];
    }
 sayName()
 {
   console.log("My name is",this.name);
   console.log("My email is",this.email);
   console.log("My address is",this.address);
+  }
+  sayDetails()
+  {
+    this.sayName();
   }
  }
  interface address
