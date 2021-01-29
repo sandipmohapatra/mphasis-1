@@ -9,6 +9,9 @@ import { Component } from '@angular/core';
   {{address.state}}{{address.city}}</p>
 <p><Button (click)="sayName()">Say My Details</Button></p> 
 <p><Button (click)="sayDetails()">Say My Profile</Button></p> 
+<p><Button (click)="toggleHobbies()">
+{{showHobbies ? "Hide Hobbies" :"show hobbies"}}</Button></p> 
+<div *ngIf="showHobbies">
 <h3>My Hobbies are </h3>{{hobbies}}
 <h3>My Daily Foods are </h3>
 <ul>
@@ -16,6 +19,7 @@ import { Component } from '@angular/core';
 {{food}}
 </li>
 </ul>
+</div>
 `
 })
 export class TestComponent {
@@ -24,6 +28,7 @@ email:string;
 address:address;
 hobbies:string[]
 foods:string[];
+showHobbies:boolean;
   constructor() 
   {
 this.name='Sandip Mohapatra';
@@ -47,6 +52,17 @@ sayName()
   sayDetails()
   {
     this.sayName();
+  }
+  toggleHobbies()
+  {
+    if(this.showHobbies==true)
+    {
+      this.showHobbies=false;
+    }
+    else
+    {
+      this.showHobbies=true;
+    }
   }
  }
  interface address
