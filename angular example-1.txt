@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  template:`
+  <p>Hello my name is {{name}}</p>
+  <p>Hello my email is {{email}}</p>
+  <p>Hello my address is {{address.street}} {{address.loc}} 
+  {{address.state}}{{address.city}}</p>
+<p><Button (click)="sayName()">Say My Details</Button></p> `
+})
+export class TestComponent {
+name:string;
+email:string;
+address:address;
+  constructor() 
+  {
+this.name='Sandip Mohapatra';
+this.email='sandip@gmail.com';
+this.address=
+{
+  street:101,
+  loc:'Sivaji Nagar',
+  state:'Karnataka',
+  city:'Bangalore'
+}
+   }
+sayName()
+{
+  console.log("My name is",this.name);
+  console.log("My email is",this.email);
+  console.log("My address is",this.address);
+  }
+ }
+ interface address
+  {
+   street:number;
+   loc:string;
+   state:string;
+   city:string; 
+  }
