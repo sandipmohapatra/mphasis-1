@@ -192,12 +192,60 @@ const appRoutes: Routes = [
     AppComponent, Appproduct, AppRouting],
   imports: [BrowserModule,AppRoutingModule,RouterModule.forRoot(appRoutes)],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent]  <------change the name to AppRouting
 })
 export class AppModule { }
-----------------------------------------------------------------------
+-----------------------------------------Second Program-----------------------------
+app.routing.ts
+----------------------
+import { Component, OnInit } from '@angular/core';
 
+@Component({
+  selector: 'app-rout',
+  templateUrl: './app.routing.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppRouting{
+}
 
+-------------------------------------------------------------------
+app.routing.html
+-----------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
 
+<div style="padding:5px">
+    <ul class="nav nav-tabs">
+        <li routerLinkActive="active">
+            <a routerLink="Product">Products</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="Inventory">Inventory</a>
+        </li>
+        <li routerLinkActive="active">
+            <a routerLink="Login">Login</a>
+        </li>
+    </ul>
+    <br/>
+    <router-outlet> </router-outlet>
+</div></div>
+</body>
+</html>
 
-
+------------------------------------------------------
+app.component.css
+---------------------------
+h1{
+    color:red;
+}
+------------------------------------------
