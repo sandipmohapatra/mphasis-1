@@ -70,7 +70,8 @@ t1=sandip
 ---------------------------------------------------------------
 There are 2 ways of data binding
 --------------------------------------------------
-1)one way data binding
+one way data binding
+1)interpolation
 we use double curly braces {{}} and is known as interpolation or template expression.
 example:- 
 we are assigning some value in the "app.component.ts" and the value displayed on the html page.
@@ -99,11 +100,18 @@ Enter your name<input type=text name=t1 size=20>
 
 [(value)] ="expression";
 Enter your name<input type=text [(ngModel)]="name">
-
+----------------------------------------------------------------------------------------
+app.module.ts
+---------------------------
+1)import { FormsModule } from '@angular/forms';
+2)@NgModule({FormsModule})
+FormsModule ==>package
+@angular/forms ==>Library
 ---------------------------------------------------------------------------------------------------------- 
+In 2 way binding we have 
 MVC -Angular follow it.
 
-Model---------data stored 
+Model---------data stored and updated
 view -----------The output screen
 controller-----The .ts file 
 -----------------------------------------------------------------------------------------------------------------
@@ -141,8 +149,8 @@ oneway
 	oneway.component.html
 *automatically app.module.ts will be updated
 -------------------------------------------------------------
-2)change in index.html
-3)change in bootstrap[OnewayComponent]
+2)change in index.html <-----<app-root></app-root>
+3)change in bootstrap[OnewayComponent]   <--app.module.ts
 
 ------------------------------------------------------------------
 oneway.component.ts
@@ -173,6 +181,137 @@ oneway.component.html
     </dl>
   </div>
 -------------------------------------------------------------------------
+1)create folder by name :- twowaybinding
+desktop/flipcard/src/app>ng g c twowaybinding --skipTests
+2)change in index.html
+3)change in app.module.ts
+--------------------------------------------------------------------------
+
+
+1. twowaybinding.component.ts
+--------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-twowaybinding',
+  templateUrl: './twowaybinding.component.html',
+  styleUrls: ['./twowaybinding.component.css']
+})
+export class TwowaybindingComponent {
+ public name = 'Samsung TV';
+ public city = 'Delhi';
+ public inStock = true;
+ public product = {
+   Name: '',
+   City: '',
+   InStock: false
+ };
+ public UpdateClick() {
+   this.product = {
+     Name: this.name,
+     City: this.city,
+     InStock: this.inStock
+   };
+ }
+}
+---------------------------------------------------------------------------------------------
+2. twowaybinding.component.html
+-------------------------------------------------------
+<div class="container-fluid">
+<h2 class="text-center text-primary">Two Way Binding</h2>
+<div class="row">
+  <div class="col-3">
+    <div class="form-group">
+        <label>Name</label>
+        <div>
+            <input [(ngModel)]="name" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Shipped To</label>
+      <div>
+          <select [(ngModel)]="city" class="form-control">
+            <option>Delhi</option>
+            <option>Hyderabad</option>
+          </select>
+      </div>
+    </div>
+    <div class="form-group">
+        <label>Is In Stock</label>
+        <div>
+            <input [(ngModel)]="inStock" type="checkbox"> Yes
+        </div>
+    </div>
+    <div class="form-group">
+      <button (click)="UpdateClick()" class="btn btn-primary btn-block">Update</button>
+    </div>
+  </div>
+  <div class="col-9">
+    <table class="table table-hover">
+        <colgroup span="1" style="background-color: aquamarine;"></colgroup>
+        <tr>
+            <td>Name</td>
+            <td [innerHTML]="product.Name"></td>
+        </tr>
+        <tr>
+            <td>Shipped To</td>
+            <td>{{product.City}}</td>
+        </tr>
+        <tr>
+            <td>Stock Status</td>
+            <td>{{(product.InStock==true)?"Available":"Out of Stock"}}</td>
+        </tr>
+    </table>
+  </div>
+</div>
+</div>
+ -----------------------------------------------------------------------------
+1. ifdemo.component.ts(Directives)
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ifdemo',
+  templateUrl: './ifdemo.component.html',
+  styleUrls: ['./ifdemo.component.css']
+})
+export class IfdemoComponent {
+   public product = {
+     Name: 'Nike Casuals',
+     Price: 4500.55,
+     Photo: 'assets/shoe.jpg'
+   };
+   public showImage = false;
+   public btnText = 'Show';
+   public TogglePreview() {
+      this.showImage = (this.showImage==false)?true:false;
+      this.btnText = (this.btnText=='Show')?'Hide':'Show';
+   }
+}
+
+-------------------------------------------------------------------------------
+2. ifdemo.component.html
+
+<div class="container-fluid">
+<h2>Product Details</h2>
+<div class="row">
+  <div class="col-3">
+      <dl>
+          <dt>Name</dt>
+          <dd>{{product.Name}}</dd>
+          <dt>Price</dt>
+          <dd>{{product.Price}}</dd>
+      </dl>
+      <button (click)="TogglePreview()" class="btn btn-primary btn-sm btn-block">{{btnText}} Preview</button>
+  </div>
+  <div class="col-9">
+    <div *ngIf="showImage">
+        <img [src]="product.Photo" height="200" width="200" >
+    </div>
+  </div>
+</div>
+</div>
+----------------------------------------------------------------------------------------------------- 
 
 
 
