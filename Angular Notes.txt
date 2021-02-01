@@ -16,6 +16,16 @@ It provides faster rendering.
 10)Previous version used JIT compiler [just-in-time]
 *it compiles your code after the page is loaded into the browser.   
 ---------------------------------------------------------------------------------------------
+steps for Installation
+--------------------------------------
+1)npm install -g @angular/cli
+2)C:\projects-workspace> ng new amazon
+3)C:\projects-workspace\amazon>ng serve 
+4)Browser- Application starts on Live Server listening on http://localhost:4200
+To create subfolders
+5)C:\Users\sandip\Desktop\amazon\src\app>ng g c login --skipTests
+----------------------------------------------------------------------------------------------------
+
 App folder
 --------------------
 1)app.component.html-------------Presentation(View)
@@ -45,6 +55,104 @@ but only one app.module.ts
 4)@Compoment ({property:value,property:value})
 5)@Component() Decorator that marks a class as an Angular component. and provides configuration metadata that determines how the component should be processed,instantiated and used at runtime.
 *how it will function :- feedback,contact,registration
+
+1)selector :<app-home></app-home> .This is from index.html.
+2)template:Here directly we write the html code to render.
+3)templateUrl:Here we give the path of the html file.
+4)styles:It is a collection of style properties and their values.
+5)styleUrls:It can access styles from an enternal stylesheet.
+6)animations:it use a set of CSS keyframes to use for animations.
+--------------------------------------------------------------------------------------------
+Data binding
+-------------------------
+<input type=text name=t1 size=20>
+t1=sandip
+---------------------------------------------------------------
+There are 2 ways of data binding
+--------------------------------------------------
+1)one way data binding
+we use double curly braces {{}} and is known as interpolation or template expression.
+example:- 
+we are assigning some value in the "app.component.ts" and the value displayed on the html page.
+{{name}}
+<p>The sum of 6 and 7 is {{6+7}} </p>
+<p>The multiplcation of 6 and 7 is {{6*7}} </p>
+--------------------------------------------------------------------
+2)property binding
+------------------------------
+In this we use square brackets to the DOM properties.
+example:-
+<img[src]="shoe.jpg">
+-------------------------------------------------------------------
+3)event binding
+-----------------------
+in this we use circular brackets .it is mostly used with buttons.
+we put event in parentheses.
+example:-
+<button (click)="onSave()">Save</button>
+
+2)two way data binding
+---------------------------------------
+In this user can update the entry .A change made to the user entry in the html input element we require two-way binding.
+example
+Enter your name<input type=text name=t1 size=20> 
+
+[(value)] ="expression";
+Enter your name<input type=text [(ngModel)]="name">
+
+---------------------------------------------------------------------------------------------------------- 
+MVC -Angular follow it.
+
+Model---------data stored 
+view -----------The output screen
+controller-----The .ts file 
+-----------------------------------------------------------------------------------------------------------------
+one way binding
+-------------------------
+oneway.component.ts
+-----------------------------------
+selector:'app-root';
+templateUrl:'oneway.component.html';
+export class OnewayComponent
+{
+public product=
+{
+Name='Samsung TV',
+Price:45000.44;
+}}
+----------------------------------------------------
+<dl>
+<dt>Name</dt>
+<dd>{{product.Name}}</dd>
+<dd><input type=text value={{product.Name}}></dd>
+<dt>Price</dt>
+<dd>{{product.Price}}</dd>
+<dd><input type=text value={{product.Price}}></dd>
+<dd innerHTML={{product.Price}}></dd>
+</dl>
+------------------------------
+create folder
+---------------------
+1)desktop/flipcard/src/app>ng g c oneway --skipTests
+
+oneway
+ 	oneway.component.ts
+	oneway.component.css
+	oneway.component.html
+*automatically app.module.ts will be updated
+-------------------------------------------------------------
+2)change in index.html
+3)change in bootstrap[OnewayComponent]
+
+------------------------------------------------------------------
+
+
+
+
+
+
+
+
 
 
 
