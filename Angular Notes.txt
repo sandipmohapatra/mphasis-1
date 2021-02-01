@@ -145,8 +145,34 @@ oneway
 3)change in bootstrap[OnewayComponent]
 
 ------------------------------------------------------------------
+oneway.component.ts
+----------------------------------
+import { Component } from '@angular/core';
 
-
+@Component({
+  selector: 'app-root',
+  templateUrl: './Oneway.component.html'
+  })
+export class OnewayComponent {
+    public product = {
+      Name: 'Samsung TV',
+      Price: 45000.55
+    };
+ }
+-----------------------------------------------------------
+oneway.component.html
+-------------------------------------
+<div class="container">
+    <h2>Product Details</h2><hr>
+    <dl>
+        <dt>Name</dt>
+        <dd>{{product.Name}}</dd>
+        <dd><input type="text" value="{{product.Name}}"></dd>
+        <dt>Price</dt>
+        <dd innerHTML="{{product.Price}}"></dd>
+    </dl>
+  </div>
+-------------------------------------------------------------------------
 
 
 
