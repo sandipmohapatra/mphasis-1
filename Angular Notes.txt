@@ -344,18 +344,10 @@ export class SwitchdemoComponent{
    };
    public selectedView = 'info';
    public views = ['info', 'preview', 'more'];
-   public count = 0;
    public ChangeView(obj) {
       this.selectedView = obj.target.name;
    }
-   public NextClick(){
-     this.count++;
-     this.selectedView = this.views[this.count];
-   }
-   public PrevClick(){
-     this.count--;
-     this.selectedView = this.views[this.count];
-   }
+ 
 }
 --------------------------------------------------------------------------------------------------
 2.Switchdemo.component.html
