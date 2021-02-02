@@ -710,6 +710,84 @@ public product = {
     
  </div>
 
+-----------------------------------------------------------------------------------------
+Angular  also has the facility to create custom pipes. The general way to define a custom pipe is as follows.
+syntax:-
+----------------
+import { Pipe, PipeTransform } from '@angular/core';  
+@Pipe({name: 'Pipename'}) 
+
+export class Pipeclass implements PipeTransform 
+{ 
+   transform(parameters): returntype 
+{ } 
+} 
+--------------------------------------------------------------------------------------
+Where,
+
+'Pipename' - This is the name of the pipe.
+
+Pipeclass - This is name of the class assigned to the custom pipe.
+
+Transform - This is the function to work with the pipe.
+
+Parameters - This are the parameters which are passed to the pipe.
+
+Returntype - This is the return type of the pipe.
+----------------------------------------------------------------------------------
+step-1)create folder multiplier
+step-2)
+--------------------------------------------------------------
+multiplier.component.ts
+---------------------------------------------------------------------
+import {Component} from '@angular/core';
+@Component ({
+  selector: 'app-multiplier',
+  template:`
+  <p>Multiplier {{5 | Multiplier: 20}}</p> <br />
+  
+  <p>Multiplier {{2 | Multiplier: 20}}</p> <br />
+  
+  <p>Multiplier {{4 | Multiplier: 20}}</p> <br />
+   `
+})
+export class MultiplierComponent
+{}
+-----------------------------------------------------------------------------------
+step 3) create a file inside multiplier folder
+-----------------------------------------------------------
+multiplier.pipe.ts (new pipe is defined) //this custom pipe have to be separate
+--------------------------------------------------------------
+import {Pipe,PipeTransform} from '@angular/core';
+
+@Pipe({name: 'Multiplier'})
+
+export class Multiplierpipe implements PipeTransform
+{
+    transform(value:number, multiply: number):number
+    {
+        return multiply * value
+    }
+}
+
+--------------------------------------------------------------------------------------
+app.module.ts
+----------------------------------------------------------------------------------------
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }  from './app.component';
+import {FormsModule} from  '@angular/forms';
+import { Multiplierpipe } from './multiplier/multiplier.pipe';
+
+@NgModule({
+  imports:      [ BrowserModule],
+  declarations: [ AppComponent ,Multiplierpipe],
+  bootstrap:    [ MultiplierComponent ]
+})
+export class AppModule { }
+
+----------------------------------------------------------------------------------------------
 
 
 
