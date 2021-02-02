@@ -630,6 +630,89 @@ Shoppingcart.component.html
   </div>
 </div>
 ------------------------------------------------------------------------------------------------------
+Angular Pipe
+---------------------------
+1)Pipe is used to transform data.
+2)Data may come to angular from various source so the data type of source provider and datatype of the typescript will not match.so it will not display in proper format .so pipe will transform the data and display in desired format.
+3)pipes are used for formatting and filtering the data.
+4)All pipes are derived from 'PipeTransform' .
+5)import {PipeTransform} from '@angular/core'
+6)we have some pre-defined pipes and we can also create custom pipes.
+7)Every pipe is defined with a pipe name,which is configured using "@Pipe()".
+@Pipe({name:"uppercase"})
+8)Every pipe implements  "PipeTransform" and use the transform() method.
+export class Uppercase implements PipeTransform
+{
+transform(value)
+{ return value;}}
+-----------------------------------------------------------------
+example :1
+----------------------
+app.component.ts file.
+-------------------------------------------
+import { Component } from '@angular/core';
+@Component ({ 
+   selector: 'my-app', 
+   templateUrl: 'app/app.component.html' 
+}) 
+export class AppComponent { 
+   TutorialName: string = 'Angular JS'; 
+   appList: string[] = ["Binding", "Display", "Services"]; 
+} 
+-----------------------------------------------------------------------
+app.component.html file.
+-------------------------------------------------------------------------
+<div> 
+   The name of this Tutorial is {{TutorialName}}<br>  
+   The first Topic is {{appList[0] | uppercase }}<br> 
+   The second Topic is {{appList[1] | uppercase }}<br> 
+   The third Topic is {{appList[2]| uppercase }}<br> 
+</div>
+
+----------------------------------------------------------------------------------------
+Example :-
+Pre-defined Pipes
+-----------------------------------
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-pipeexample1',
+  templateUrl: './pipeexample1.component.html',
+  styleUrls: ['./pipeexample1.component.css']
+})
+export class Pipeexample1Component  
+{
+  TutorialName: string = 'Angular JS'; 
+  appList: string[] = ["Binding data", "Display device", "Services oriented"]; 
+public product = {
+  Name:'Samsung TV',
+  Price:45000.50,
+  Mfd:new Date('2021-02-02')
+}}
+---------------------------------------------------------------------------------------------
+<div> 
+    The name of this Tutorial is {{TutorialName}}<br>  
+    The first Topic is {{appList[0] | titlecase }}<br> 
+    The second Topic is {{appList[1] | titlecase }}<br> 
+    The third Topic is {{appList[2]| titlecase }}<br> 
+    The product name is {{product.Name | titlecase}}<br>
+    The product price is {{product.Price}}<br>
+    The product price is {{product.Price|number}}<br>
+    The product price is {{product.Price|currency}}<br>
+    The product price is {{product.Price|currency:'INR'}}<br>
+    The product price is {{product.Price|currency:'&#8377;'}}<br>
+    The product date is {{product.Mfd|date:'MMM-dd-yyyy'}}<br>
+    The product date is {{product.Mfd|date:'shortDate'}}<br>
+    The product Date is {{product|json}}<br/>    
+    The Canadian dollar {{1234567 | currency:'CAD':'symbol' :'1.2-5'}}<br>
+    The first Topic is {{appList[0] | slice:1:2}}<br> 
+    The second Topic is {{appList[1] | slice:1:3}}<br> 
+   The third Topic is {{appList[2]| slice:2:3}}<br> 
+    
+ </div>
+
+
+
+
 
 
 
