@@ -815,7 +815,54 @@ public msg='welcome to Angular 10';
    }
 -----------------------------------------------------------------------
 
+Example-10
+--------------------------------------------------------------------------------
+	Likesdemo.component.ts
+-------------------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
 
+@Component({
+  selector: 'app-likesdemo',
+  templateUrl: './likesdemo.component.html',
+  styleUrls: ['./likesdemo.component.css']
+})
+export class LikesdemoComponent{
+   public products = [
+     {Name: 'JBL Speaker', Photo: 'assets/jblspeaker.jpg', Likes: 0, Dislikes: 0},
+     {Name: 'Nike Casuals', Photo: 'assets/shoe.jpg', Likes: 0, Dislikes: 0},
+     {Name: 'Shirt', Photo: 'assets/shirt.jpg', Likes: 0, Dislikes: 0}
+   ];
+   public LikesCounter(item){
+       item.Likes++;
+   }
+   public DislikesCounter(item){
+        item.Dislikes++;
+   }
+}
+-----------------------------------------------------------------------------------
+	Likesdemo.component.html
+--------------------------------------------------------------
+<div class="container-fluid">
+ <h2>Products Catalog</h2>
+ <div class="card-deck">
+    <div class="card" *ngFor="let item of products">
+        <div class="card-header">
+            <h3>{{item.Name}}</h3>
+        </div>
+        <div class="card-body">
+            <img width="200" height="200" [src]="item.Photo" >
+        </div>
+        <div class="card-footer">
+           <div class="btn-group">
+            <button (click)="LikesCounter(item)" class="btn btn-success">[{{item.Likes}}]<span class="fa fa-thumbs-up"></span> Like(s)</button>
+            <button (click)="DislikesCounter(item)" class="btn btn-danger">[{{item.Dislikes}}]<span class="fa fa-thumbs-down">Dislike(s)</span></button>
+           </div>
+        </div>
+    </div>
+</div>
+</div>
+
+-----------------------------------------------------------------------------------------------------
 
 
 
