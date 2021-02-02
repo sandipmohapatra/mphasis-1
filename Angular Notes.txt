@@ -863,6 +863,151 @@ export class LikesdemoComponent{
 </div>
 
 -----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------
+Example-11
+---------------------------------------------------------------
+	Keybinding.component.ts
+---------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-keybinding',
+  templateUrl: './keybinding.component.html',
+  styleUrls: ['./keybinding.component.css']
+})
+export class KeybindingComponent{
+  public users = [
+    {UserName: 'john'},
+    {UserName: 'john12'},
+    {UserName: 'john_nit'},
+    {UserName: 'david'}
+  ];
+  public userName;
+  public userMsg;
+  public isUserValid = false;
+  public isUserInvalid = false;
+
+  public password;
+  public showCapsWarning = false;
+
+  public VerifyUserOnKeyUp(){
+    if (this.userName.length < 3) {
+      this.userMsg = 'User Name too short..';
+      this.isUserInvalid = true;
+      this.isUserValid = false;
+    } else {
+      for(var item of this.users)
+ {
+        if(item.UserName == this.userName) 
+{
+          this.userMsg = 'User Name Taken - Try Another';
+          this.isUserInvalid = true;
+          this.isUserValid = false;
+          break;
+        } else {
+          this.userMsg = 'User Name Available';
+          this.isUserInvalid = false;
+          this.isUserValid = true;
+        }
+      }
+    }
+  }
+  public VerifyPassword(e){
+      if(e.keyCode>=65 && e.keyCode<=90) 
+{
+          this.showCapsWarning = true;
+      } else {
+        this.showCapsWarning = false;
+      }
+  }
+}
+------------------------------------------------------------------------------------------------
+	Keybinding.component.html
+--------------------------------------------------------------------------------------
+<div class="container-fluid">
+  <h2>Register User</h2>
+  <div class="form-group">
+    <label>User Name</label>
+    <div>
+        <input [ngClass]="{'errorStyle':isUserInvalid, 'validStyle':isUserValid}" (keyup)="VerifyUserOnKeyUp()" [(ngModel)]="userName" type="text" class="form-control">
+        <span [ngClass]="{'text-success':isUserValid, 'text-danger':isUserInvalid}">{{userMsg}}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <div>
+        <input (keypress)="VerifyPassword($event)" [(ngModel)]="password" type="password" class="form-control">
+        <div *ngIf="showCapsWarning">
+            <span class="fa fa-exclamation-triangle text-warning"></span>
+            <span class="text-warning">Warning CAPS is ON</span>
+        </div>
+    </div>
+  </div>
+</div>
+--------------------------------------------------------------------------------------------
+	Keybinding.component.css
+----------------------------------------------------------------
+.container-fluid {
+    margin:auto;
+    padding:20px;
+    width:300px;
+    align-items: center;
+    justify-content: center;
+}
+.errorStyle {
+    border:1px solid red;
+    box-shadow: 2px 3px 4px red;
+}
+.validStyle {
+    border:1px solid green;
+    box-shadow: 2px 3px 4px green;
+}
+----------------------------------------------------------------------
+example-12
+----------------------------------------------------------------------
+	Eventsdemo.component.ts
+----------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-eventsdemo',
+  templateUrl: './eventsdemo.component.html',
+  styleUrls: ['./eventsdemo.component.css']
+})
+export class EventsdemoComponent {
+    public msg;
+    public txtName;
+    public OnFocus() {
+      this.msg = 'Name in Block Letters';
+    }
+    public OnBlur() {
+      this.msg = '';
+      this.txtName = this.txtName.toUpperCase();
+    }
+    public onCut(){
+      this.msg = 'Removed and Placed on Clipboard';
+    }
+    public onCopy(){
+      this.msg = 'Copied to Clipboard';
+    }
+    public onPaste() {
+      this.msg = 'Inserted from Clipboard';
+    }
+}
+----------------------------------------------------------------
+	Eventsdemo.component.html
+----------------------------------------------------------------
+<div class="container-fluid">
+  <h2>Register for Cut/copy/paste</h2><hr>
+  <div class="form-group">
+      <label>User Name</label>
+      <div>
+          <input (cut)="onCut()" (copy)="onCopy()" (paste)="onPaste()" [(ngModel)]="txtName" (focus)="OnFocus()" (blur)="OnBlur()" class="form-control" type="text" placeholder="Block Letters Only">
+          <span>{{msg}}</span>
+      </div>
+  </div>
+</div>
+------------------------------------------------------------------------------
 
 
 
