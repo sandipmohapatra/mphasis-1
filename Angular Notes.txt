@@ -476,6 +476,12 @@ export class FordemoComponent {
  </div>
 </div>
 -------------------------------------------------------------------------------------------------------------------------------
+step 1)src/app>ng g c shoppingcart --skipTests
+step 2)change in index.html-----------<app-shoppingcart></app-shoppingcart>
+step 3)bootstrap[ShoppingcartComponent]
+step 4)(jblspeaker.jpg) download and store in assets folder.
+-------------------------------------------------------------------------
+
 example-9
 --------------------
 import { Component, OnInit } from '@angular/core';
@@ -486,7 +492,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent {
- public categories = ['Select a Category', 'Electronics', 'Footwear', 'Fashion'];
+ public categories = ['Select a Category', 'Electronics', 'Footwear', 'Fashion','Watch','Groceries','ladies Items'];
  public electronics = ['Select Electronics', 'JBL Speaker', 'Earpods'];
  public footwear = ['Select Footwear', 'Nike Casuals', 'Lee Cooper Boot'];
  public fashion = ['Select Fashion', 'Shirt', 'Jeans'];
@@ -1008,9 +1014,95 @@ export class EventsdemoComponent {
   </div>
 </div>
 ------------------------------------------------------------------------------
+Key Event Binding
+---------------------------------
+you can handle the interaction based on keys like
+i)Keyup :- when key is released.
+ii)KeyDown :- when user hold down a key
+iii)KeyPress:-when user finish a key and use another.
+iv)keyCode:- it return the actual keycode.This is ascii code A=65,Z=90
+v)charCode :-It return the character code as per UTF standards.
+vi)altKey :- return true when alt is used.
+vii)ctrlKey:- return true when ctrl is used.
+viii)shiftKey:- return true when shift is used.
+step 1
+-------------
+public users=
+[{UserName:'john'}
+{UserName:'john12'}]
 
+users.UserName.length < 3 we are giving a message.
 
+step 2
+-----------
+for (var item of this.users)
+{
+if(item.UserName==this.userName)
+{
+msg =='user name taken-try another';
+}
+}
+-----------------------
+step 3
+-------------------
+password
+--------------
+varifyPassword(e)
+{
+if(e.keyCode>=65 and e.keyCode<=90)
+this.showCapsWarning=true
+else
+false
+-------------------------------
+Angular attribute directives
+----------------------------------------
+1)NgModel:- dynamic element.it is model who's value is changed dynamically.
+example:- <input type="text" [(ngModel)]="username">
+2)NgClass:-dynamic assignment of css class.we can change the html element dynamically.
+example:-<div[ngClass]=" 'cssClassName' "> Your text </div>
+abc.css
+---------
+.effects{
+border:
+box-shadow:
+background-color:red
+text-align:
+padding:
+}
+----------------------
+def.html
+----------------
+<h1[ngClass]=" ' effects' ">Class Binding is Angular </h1>
+<p>[ngClass]=" ' effects' ">Class Binding is Angular </p>
+* any change made to the .effects class it will reflect to the text.
+---------------
+3)NgStyle:-it is defined inline style for html element.
+it will applied to single line.
+example:- <img [ngStyle]="styleObj" src="asserts/shoe.jpg" width="50" height="50">
 
+public styleObj={
+background-color:
+color:
+text-align:
+}
+--------------------------------------------------------------------------------------------
+Difference between class and ngClass.
+-------------------------------------------------------
+class :
+<div class="form-group">
+<label>User Name</label>
+<div>
+-----------------------------------------------------
+<div [ngClass]="{'errorStyle':isUserInvalid, 'validStyle':isUserValid}" >
+
+isDark:boolean=true;
+isLight:boolean=false;
+
+<div [ngClass]color?'isDark':'isLight'>
+
+example:-
+<div [ngClass]='a ==b'>'class1':'class2'>
+-----------------------------------------------------------------------
 
 
 
