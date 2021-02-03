@@ -1129,6 +1129,8 @@ we have some directives to validate a form
 *required,Minlength,Maxlength,pattern,email validation.
 
 -------------------------------------------------------------------------------------------------------
+example-13
+----------------------
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -1141,7 +1143,7 @@ export class TemplateformComponent {
    }
 }
 -----------------------------------------------------------------------------------------
-formvalidation.component.html
+templateform.component.html
 ------------------------------------------------
 <div class="container-fluid">
   
@@ -1165,6 +1167,9 @@ formvalidation.component.html
 ---------------------------------
 Note: You can’t use “invalid or valid” properties for a field that comprises of multiple validations. You can use “errors” object to identify the specific error in input field.
 Ex: Errors object to handle multiple errors
+---------------------------------------------------
+templateform.component.html
+-----------------------------------------------
 <div class="container-fluid">
   
   <form #frmRegister="ngForm">
@@ -1191,7 +1196,102 @@ Ex: Errors object to handle multiple errors
   </form>
 </div>
 ----------------------------------------------------------------------------------------------------------------------
+example-14
+---------------------------
+Formvalidation.component.ts
+import { Component, OnInit } from '@angular/core';
 
+@Component({
+  selector: 'app-formvalidation',
+  templateUrl: './formvalidation.component.html',
+  styleUrls: ['./formvalidation.component.css']
+})
+export class FormvalidationComponent{
+  public displayCityError = false;
+  public displayEvenError = false;
+  
+public VerifyCity(val)
+{
+    if(val=='nocity') {
+      this.displayCityError = true;
+    } else {
+      this.displayCityError = false;
+    }
+  }
+  public VerifyEven(val) {
+     if(val % 2 == 0) {
+       this.displayEvenError = false;
+     } else {
+       this.displayEvenError = true;
+     }
+  }
+}
+--------------------------------------------------------------------------------------------------------------
+Formvalidation.component.html
+----------------------------------------------
+<div class="container-fluid">
+  
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required minlength="4">
+            <div *ngIf="txtName.touched && txtName.invalid" class="text-danger">
+                <span *ngIf="txtName.errors.required" >Name Required</span>
+                <span *ngIf="txtName.errors.minlength">Name too short..</span>
+            </div>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required pattern="\+91\d{10}">
+            <div *ngIf="txtMobile.touched && txtMobile.invalid" class="text-danger">
+                <span *ngIf="txtMobile.errors.required">Mobile Required</span>
+                <span *ngIf="txtMobile.errors.pattern">Invalid Mobile</span>
+            </div>
+        </dd>
+        <dt>Gender</dt>
+        <dd>
+            <input type="radio" name="optGender" value="none" ngModel #optGender="ngModel"> None
+            <input type="radio" name="optGender" value="male" ngModel #optGender="ngModel"> Male
+            <input type="radio" name="optGender" value="female" ngModel #optGender="ngModel"> Female
+        </dd>
+        <dt>Select Your City</dt>
+        <dd>
+            <select (change)="VerifyCity(lstCities.value)" name="lstCities" ngModel #lstCities="ngModel" class="form-control" >
+                <option value="nocity">Select City</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyd">Hyd</option>
+            </select>
+            <span *ngIf="displayCityError" class="text-danger">Please Select Your City</span>
+        </dd>
+        <dt>Enter an Even Number</dt>
+        <dd>
+            <input (blur)="VerifyEven(txtEven.value)" type="text" class="form-control" name="txtEven" ngModel #txtEven="ngModel">
+            <span *ngIf="displayEvenError" class="text-danger">Not an Even Number</span>
+        </dd>
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+--------------------------------------------------------------------------------------------
+Formvalidation.component.css
+---------------------------------------------------------------------
+dl {
+    width:400px;
+    margin:auto;
+    justify-items: center;
+    align-items: center;
+}
+.validStyle {
+    border:2px solid green;
+    box-shadow: 2px 2px 3px green;
+}
+.invalidStyle {
+    border:2px solid red;
+    box-shadow: 2px 2px 3px red;
+}
+-------------------------------------------------------------------------------------------------
 
 
 
