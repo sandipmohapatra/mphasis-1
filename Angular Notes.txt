@@ -492,7 +492,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent {
- public categories = ['Select a Category', 'Electronics', 'Footwear', 'Fashion','Watch','Groceries','ladies Items'];
+ public categories = ['Select a Category', 'Electronics', 'Footwear', 'Fashion'];
  public electronics = ['Select Electronics', 'JBL Speaker', 'Earpods'];
  public footwear = ['Select Footwear', 'Nike Casuals', 'Lee Cooper Boot'];
  public fashion = ['Select Fashion', 'Shirt', 'Jeans'];
@@ -636,6 +636,20 @@ Shoppingcart.component.html
   </div>
 </div>
 ------------------------------------------------------------------------------------------------------
+class Employee {
+    empCode: number;
+    empName: string;
+
+    constructor(code: number, name: string) {
+        this.empName = name;
+        this.empCode = code;
+    }
+
+    display = () => console.log(this.empCode +' ' + this.empName)
+}
+let emp = new Employee(1, 'Ram');
+emp.display();
+------------------------------------------------------------------------------------------
 Angular Pipe
 ---------------------------
 1)Pipe is used to transform data.
@@ -1103,10 +1117,80 @@ isLight:boolean=false;
 example:-
 <div [ngClass]='a ==b'>'class1':'class2'>
 -----------------------------------------------------------------------
+Form Validation
+-----------------------------
+we have some directives to validate a form
+1)NgDirty :- It returns true when the value of the form element is modified.
+2)NgTouched:- It returns true when the element get focus.
+3)NgUntouched:- It returns true when the element never get focus.
+4)NgValid:- it returns true if all input validations are valid.
+5)NgInvalid:- it returns true if any input validations are invalid.
+6)NgErrors:-It is an object that collects all errors of input field.
+*required,Minlength,Maxlength,pattern,email validation.
 
+-------------------------------------------------------------------------------------------------------
+import { Component, OnInit } from '@angular/core';
 
-
-
+@Component({
+  selector: 'app-templateform',
+  templateUrl: './templateform.component.html',
+  styleUrls: ['./templateform.component.css']
+})
+export class TemplateformComponent {
+   
+   }
+}
+-----------------------------------------------------------------------------------------
+formvalidation.component.html
+------------------------------------------------
+<div class="container-fluid">
+  
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtName.invalid || txtName.touched && txtName.invalid" class="text-danger">Name Required</span>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required>
+            <span *ngIf="frmRegister.submitted && txtMobile.invalid || txtMobile.touched && txtMobile.invalid" class="text-danger">Mobile Required</span>
+        </dd>
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+---------------------------------
+Note: You can’t use “invalid or valid” properties for a field that comprises of multiple validations. You can use “errors” object to identify the specific error in input field.
+Ex: Errors object to handle multiple errors
+<div class="container-fluid">
+  
+  <form #frmRegister="ngForm">
+    <dl>
+        <h2>Register User</h2>
+        <dt>User Name</dt>
+        <dd>
+            <input type="text" name="txtName" ngModel #txtName="ngModel" class="form-control" required minlength="4">
+            <div *ngIf="txtName.touched && txtName.invalid" class="text-danger">
+                <span *ngIf="txtName.errors.required" >Name Required</span>
+                <span *ngIf="txtName.errors.minlength">Name too short..</span>
+            </div>
+        </dd>
+        <dt>Mobile</dt>
+        <dd>
+            <input type="text" name="txtMobile" ngModel #txtMobile="ngModel" class="form-control" required pattern="\+91\d{10}">
+            <div *ngIf="txtMobile.touched && txtMobile.invalid" class="text-danger">
+                <span *ngIf="txtMobile.errors.required">Mobile Required</span>
+                <span *ngIf="txtMobile.errors.pattern">Invalid Mobile</span>
+            </div>
+        </dd>
+        <button class="btn btn-primary btn-block">Register</button>
+    </dl>
+  </form>
+</div>
+----------------------------------------------------------------------------------------------------------------------
 
 
 
