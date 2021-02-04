@@ -137,6 +137,79 @@ describe('AppComponent', () => {
   });
 });
 -----------------------------------------------------------------------------------------------------
+Predefined Functions in spec.ts
+-------------------------------------------------Equality Check-----------------------------------
+1)toEqual() :-it is a matcher in the inbuilt library of jasmine.it will matches whether the result of the operation 
+given as an argument to the method matches with the result of it or not.
+
+example:-  expect(app.title).toEqual('ng-unit-test');
+---------------------------------------------------------------------------------------------------------------------
+2)not.toEqual() :-it is a matcher in the inbuilt library of jasmine.it is opposite of toEqual.
+
+example:-  expect(app.title).not.toEqual('ng-unit-test');
+----------------------------------------------------------------------------------------------------------------------
+3)toBe():- it is similar to toEqual.
+
+example:- expect(app.title).toBe(app.title1);
+---------------------------------------------------------------------------------
+4)not.toBe():- it is opposite to toBe().
+
+example:- expect(app.title).not.toBe(app.title1);
+------------------------------------------------Boolean Check---------------------------
+5)ToBeTruthy():-it checkes the result is equal to true or false.
+example:-expect(app).toBeTruthy();
+-------------------------------------------------------------------
+6)ToBeFalsy():-it checkes the result is equal to true or false.
+example:-expect(app).toBeFalsy();
+---------------------------------------------Sequential check----------------------------
+7)toContain() :-
+it is used to check whether the element is a part of the same array or some other array.
+example:-
+expect(1,2,3,4]).toContain(3);
+
+8)toBeCloseTo():-
+it is used to check the actual value is close to the expected value .
+example:- expect(12.34).toBeCloseTo(12.3,1);
+
+9)toMatch():-
+it works with string type variable .it checks whether a specified string is present in the expected output or not.
+example:-
+expect("satya is a good student").toMatch(satya);
+-----------------------------------------------------------Null check---------------------------------------
+10)toBeDefined()
+to check if any variable in the code is predefined or not.
+example:- expect(currentVal).toBeDefined();
+
+11)toBeUndefined() 
+to check if any variable in the code is undefined or not.
+example:- expect(currentVal).toBeUndefined();
+
+12)toBeNull()
+this is used to check null values.
+example:- expect(value).tobeNull();
+-----------------------------------------------------------Inequality Check--------------------------------------
+13)toBeGreaterThan()
+it is used to check greater than condition.
+example:- expect(exp).toBeGreaterThan(5);
+
+14)toBeLessThan()
+it is used to check less than condition .
+example:- expect(exp).toBeLessThan(5);
+------------------------------------------------------------Before/after each function-----------------------
+15)before and after each function :- it is use to execute some piece of code before and after execution of each spec.
+example:-
+var currentVal=0;
+beforeEach(function() 
+{
+currentVal=5;
+});
+---------------------------------------------------
+var currentVal=0;
+afterEach(function() 
+{
+currentVal=5;
+});
+--------------------------------------------------
 
 
 
