@@ -1,0 +1,147 @@
+Lifecycle hook of Angular.
+--------------------------------------------
+ngOnChanges - When the value of a data bound property changes, then this method is called.
+
+ngOnInit - This is called whenever the initialization of the directive/component after Angular first displays the data-bound properties happens.
+
+ngDoCheck - This is for the detection and to act on changes that Angular can't or won't detect on its own.
+
+ngAfterContentInit - This is called in response after Angular projects external content into the component's view.
+
+ngAfterContentChecked - This is called in response after Angular checks the content projected into the component.
+
+ngAfterViewInit - This is called in response after Angular initializes the component's views and child views.
+
+ngAfterViewChecked - This is called in response after Angular checks the component's views and child views.
+
+ngOnDestroy - This is the cleanup phase just before Angular destroys the directive/component.
+      
+example of implementing one lifecycle hook. 
+ app.component.ts 
+-----------------------------------------------------------------
+import {    Component } from '@angular/core';  
+@Component ({ 
+   selector: 'my-app', 
+   template: '<div> {{values}} </div> ' 
+}) 
+export class AppComponent { 
+   values = ' '; 
+   ngOnInit() { 
+      this.values = "Hello"; 
+   }}
+------------------------------------------------------------------------
+Unit Testing for Angular
+---------------------------------
+1)Angular supports MVC framework.MVC enable Unit testing.Testing the function.
+2)Angular support Test Driven Development[TDD].Both testing and development can be done at the same time.
+3)Unit testing include testing every function that you write for component,pipes.
+4)Testing verifies whether the expected values and return value are same and will return bugs.
+example:-input(5*5),o/p=25.if the expected o/p and input are same then test is success.
+5)Angular is integrated with jasmine and karma ,which are used for unit testing.
+6)we have many methods to test our code
+i)automated testing
+ii)manual testing
+iii)performance testing
+iv)automated unit testing.(supported by Angular)
+7)we have 3 types of testing
+i)Unit tests
+ii)Integration tests
+iii)End-to-End (e2e) tests.
+--------------------------------------------------------------------------
+For testing our code we use 3 methods
+i)it():- It is used for declaration of a particular test.
+ii)describe() :- it is a suite of tests.
+iii)expect():- Expect some value in true form.
+
+---------------------------------------------------------------
+example:-
+app.Testcomponent.ts
+-------------------------------
+import {Component } from '@angular/core';
+@Component({
+selector:'my-app',
+templateUrl:'./test/component.html';
+styleUrls:['./test/component.css']
+})
+export class TestComponent
+{
+title ="This is a test Component";
+}
+-----------------------------------------------------
+Testing
+-------------
+app.Testcomponent.spec.ts
+---------------------------------------
+import {async ,ComponentFixture, TestBed} from '@angular/core/testing';
+import { Testcomponent } from './app.Testcomponent';
+
+describe('Testcomponent',() =>{
+let component: Testcomponent;
+let fixture: ComponentFixture<Testcomponent>;
+
+
+it(`should have title 'This is a test Component'`,async(() =>
+{
+fixture:
+component:
+expect(component.title).toEqual('This is a test Component');
+}
+
+------------------------------------------------------------
+example -1
+---------------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'ng-unit-test';
+
+  constructor() {
+  }
+
+}
+--------------------------------------------------------
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  }));
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have as title 'ng-unit-test'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('ng-unit-test');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.content span').textContent).toContain('ng-unit-test app is running!');
+  });
+});
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
