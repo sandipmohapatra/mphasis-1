@@ -1413,6 +1413,7 @@ export class AppComponent
    ngOnInit(): void 
 { 
       this.value = this.xyz.getApp();    
+console.log("the string is "+this.value);
 }} 
 
 --------------------------------------------------------------
