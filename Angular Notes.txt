@@ -1417,8 +1417,110 @@ console.log("the string is "+this.value);
 }} 
 
 --------------------------------------------------------------
+example 3 :Capcha Program
+-------------------------
+captcha.service.ts
+----------------------------------------------------------------
+import { Injectable } from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+})
+export class CaptchaService
+{
+    public GenerateCode() {
+        let a = Math.random() * 10;
+        let b = Math.random() * 10;
+        let c = Math.random() * 10;
+        let d = Math.random() * 10;
+        let e = Math.random() * 10;
+        let f = Math.random() * 10;
+        let code = `${Math.round(a)} ${Math.round(b)} ${Math.round(c)} ${Math.round(d)} ${Math.round(e)} ${Math.round(f)}`;
+        return code;
+    }
+}
+--------------------------------------------------------------------------------------	
+	Login.component.ts
+-----------------------------------------------------------
+import { Component } from '@angular/core';
+import { CaptchaService } from '../CustomServices/captcha.service';
 
+@Component({
+    selector: 'app-login',
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
+})
+
+export class LoginComponent {
+    constructor(private captcha: CaptchaService){}
+    public code = this.captcha.GenerateCode();
+    public refreshClick() {
+        this.code = this.captcha.GenerateCode();
+    }
+}
+----------------------------------------------------------------------------------------
+	Login.component.html
+<div class="container-fluid">
+  <div class="form-group">
+  <label>User Name</label>
+  <div>
+      <input type="text" class="form-control">
+  </div>
+ </div>
+ <div class="form-group">
+  <label>Password</label>
+  <div>
+      <input type="password" class="form-control">
+  </div>
+ </div>
+ <div class="form-group">
+    <label>Verify Code</label>
+    <div>
+        {{code}} <button (click)="refreshClick()" class="btn"><span class="fa fa-sync"></span></button>
+    </div>
+    <div>
+        <input type="text" class="form-control">
+    </div>
+ </div>
+ <div class="form-group">
+    <button class="btn btn-primary btn-block">Login</button>
+ </div>
+</div>
+------------------------------------------------------------------------------------------------
+Example :4
+data.service.ts
+---------------------------
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+   public GetProducts(){
+       return [
+        {Name: 'JBL Speaker', Price: 45000.43, Photo: 'assets/jblspeaker.jpg', Category: 'Electronics'},
+        {Name: 'Earpods', Price: 15000.43, Photo: 'assets/earpods.jpg', Category: 'Electronics'},
+        {Name: 'Nike Casuals', Price: 5000.43, Photo: 'assets/shoe.jpg', Category: 'Footwear'},
+        {Name: 'Lee Cooper Boot', Price: 4000.43, Photo: 'assets/shoe1.jpg', Category: 'Footwear'},
+        {Name: 'Shirt', Price: 3000.43, Photo: 'assets/shirt.jpg', Category: 'Fashion'},
+        {Name: 'Jeans', Price: 5000.43, Photo: 'assets/jeans.jpg', Category: 'Fashion'},
+      ];
+   }
+}
+-----------------------------------------------------------------------------	
+Products.component.ts
+
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { DataService } from '../CustomServices/data.service';
+
+export class ProductscatalogComponent implements OnChanges, OnInit {
+  constructor(private data: DataService){}
+  public products = [];
+  ngOnInit() {
+    this.products = this.data.GetProducts();
+  }
+}
+-------------------------------------------------------------------------------------------------------
 
 
 
