@@ -1517,6 +1517,12 @@ Products.component.ts
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { DataService } from '../CustomServices/data.service';
 
+@Component({
+    selector: 'app-data',
+    templateUrl: 'data.component.html',
+
+})
+
 export class ProductComponent implements OnChanges {
   constructor(private data: DataService){}
   public products:any;
