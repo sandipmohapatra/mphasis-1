@@ -1344,6 +1344,8 @@ step 2)we will inject it to a component and use it.
 2)@Injectable()
 3)providedIn: 'root'
 -----------------calc.service.ts---------------------------------
+example-1
+--------------------
 import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
@@ -1385,10 +1387,35 @@ providers: [CalcService]
 we have to exceute the component.ts
 -----------------------------------------------------------------
 
+example-2
 
+import {    Injectable } from '@angular/core';  
+@Injectable()
+export class appService
+ {  
+   getApp(): string 
+{ 
+      return "Hello world";  
+  } } 
 
+------------------------------------------
+import {    Component } from '@angular/core';  
+import {    appService } from './app.service';  
+@Component ({ 
+   selector: 'demo-app', 
+   template: '<div>{{value}}</div>', 
+   providers: [appService] }) 
+export class AppComponent 
+{ 
+   value: string = ""; 
+   constructor(private  xyz: appService) 
+{ }  
+   ngOnInit(): void 
+{ 
+      this.value = this.xyz.getApp();    
+}} 
 
-
+--------------------------------------------------------------
 
 
 
