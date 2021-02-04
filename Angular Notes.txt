@@ -1523,14 +1523,15 @@ import { DataService } from '../CustomServices/data.service';
 
 })
 
-export class ProductComponent implements OnChanges {
-  constructor(private data: DataService){}
-  public products:any;
-  ngOnChanges(changes: any) {
+export class AppComponent {
+  constructor(private data: Service1Component){}
+  public products = [];
+   ngOnInit() {
     this.products = this.data.GetProducts();
-console.log(this.products);
+    console.log(this.products);
   }
 }
+
 -------------------------------------------------------------------------------------------------------
 
 
