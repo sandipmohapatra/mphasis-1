@@ -1416,6 +1416,10 @@ export class AppComponent
 console.log("the string is "+this.value);
 }} 
 
+*
+constructor(private  xyz: appService) :- This is how we have to inject service into any component.
+we inject dependency in a component constructor by specifying a constructor parameter.
+we can define an Access modifier to specify the scope of parameter as "private or public".
 --------------------------------------------------------------
 example 3 :Capcha Program
 -------------------------
@@ -1513,11 +1517,12 @@ Products.component.ts
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { DataService } from '../CustomServices/data.service';
 
-export class ProductscatalogComponent implements OnChanges, OnInit {
+export class ProductComponent implements OnChanges {
   constructor(private data: DataService){}
-  public products = [];
-  ngOnInit() {
+  public products:any;
+  ngOnChanges(changes: any) {
     this.products = this.data.GetProducts();
+console.log(this.products);
   }
 }
 -------------------------------------------------------------------------------------------------------
