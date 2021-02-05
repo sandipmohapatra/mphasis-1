@@ -1,0 +1,145 @@
+Java
+------
+1)It is a programming language.It is a high level,robust,object-oriented programming language.
+2)In java we can develop web application,mobile application ,standlone application.
+3)Java is simpler than c or c++ as we don't have pointer concept,operator overloading .
+4)It is portable and light weight.
+5)In java we have constructor but no destructor as there is automatic garbage clearance.
+6)Java development kit (JDK) are platform dependent as they differ from each OS.
+it performs task like loads code,verifies code,exceute code and provide run time environment.
+7)we have different versions of java avialable.currently we are using JDK 1.14
+-------------------------------
+Data types in java
+i)Primative data type
+byte --1 byte
+short--2 bytes
+int---4 bytes
+long--8 bytes
+float--4 bytes
+double--8 bytes
+char--2 bytes
+boolean --1 bit
+
+ii)Non-primative
+String
+Array
+------------------------------------------------------------------
+operator
+------------
+1)Unary
+i)i++,++i or i--,--i
+
+2)Binary
+i)Arithmatic operator:-  +,-,*,/,%(modulus)
+ii)comparative operator :-<,>,<=,>=,=
+iii)logical operator:-&&,||
+iv)Bitwise operator:-<<,>>
+v) assignment operator :-=,!=
+
+3)Ternary
+i)?,:
+--------------------------------------------------------------------
+OOPS (object oriented programming system)
+1)Object:- It is a reference pointer to access the variables and methods of a class.
+2)class:-It is blue print of an object or it is also called as object factory.
+3)Inheritance:-It is when one object acquires all the properties and behaviors of a parent object.
+4)Polymorphism:-If one task is performed in different ways it is known as polymorphism.
+in java we use method overloading and method overriding.
+5)Abstraction:-Hiding internal details and showing functionality is known as abstraction.(we switch on the fan the internal part is hidden and it rotate)
+6)Encapsulation:-Binding code and data together into a single unit are known as encapsulation.(capsule wrapped with different medicines)
+----------------------------------------------------------------------------
+Access specifier
+-------------------------
+1)private:- if we declare variables and methods as private we can only access it within the class.
+2)public:-if we declare variables and methods as public we can it within the class,outside the class and package.
+3)protected:-if we declare variables and methods as protected we can only access it within the class and in the child class 
+4)default:-if we declare variables and methods as default or no access specifier we can only access it within the class and also outside the class but not outside the package.
+----------------------------------------------------------------------------------------------------
+util package  --->Scanner --->methods
+lang package --->String (non-primative /class)---->methods
+-------------------------------------------------------------------------------
+All datatypes in java is also class  known as wrapper class.
+*It belong to the lang package.it is also known as default package.
+* all classes in java are in caps
+*all packages are in small
+*methods will be in camel case.
+datatype	Wrapper class(methods).
+-----------------------------------
+byte 	Byte
+short	Short
+int	Integer
+long	Long
+float 	Float
+double	Double
+char	Character
+String	String
+-------------------------------------- 
+   String :-
+-----------
+1)String is a class in java.lang package
+2)In java string is also considered as datatype
+3)String object is Immutable(cannot be changed)
+4)When we assign a value it create a new object and the value remains in memory.
+Example :- String s1=“hello”;
+ String s2=new String(“hello”);
+Method :- length(),isEmpty(),charAt(),equals(),startWith(),endsWith(),indexOf(),lastIndexOf(),toUpperCase(),toLowerCase()
+-----------------------------------------------------------------------------------------------------------------------
+String Buffer:-
+---------------------
+1)It is a peer class of string and provides all functions of string.
+2)It is mutable (can be modified) and expanded dynamically.
+3)It is synchronized
+Ex:-1) StringBuffer b=new StringBuffer(“hello”);
+We pass “hello” to StringBuffer object “b”
+2)StringBuffer b=new StringBuffer(50);
+We can store 50 or more character .It is mutable so it expands dynamically
+3)StringBuffer b=new StringBuffer()
+StringBuffer object b is created with default capacity 16 character.
+4)Methods :- append(),insert(),delete(),reverse()
+--------------------------------------------------------------------------------------------
+
+
+String Builder :-
+--------------------
+1)It is same as String Buffer
+2)String Builder is not synchronized
+3)String Buffer class takes more time to execute than StringBuilder.
+-----------------------------------------------------------------------------------------------
+String s1=”sandip”;
+String s1=”kumar”;
+Now the reference s1 contain new data the old object data is lost.
+It is known as unreferenced object and garbage collector will remove it from memory.
+---------------------------------------------------------
+package First.Friday;
+class Firstprg
+{	public static void main(String args[])
+	{
+	String s1="Mphasis and Global soft";
+	System.out.println(s1);
+	System.out.println(s1.toUpperCase());
+	System.out.println(s1.toLowerCase());
+	System.out.println(s1.indexOf('a'));
+	System.out.println(s1.lastIndexOf('a'));
+	System.out.println(s1.substring(5));
+	System.out.println(s1.substring(5,10));
+	System.out.println(s1.startsWith("Mp"));
+	System.out.println(s1.endsWith("ft"));
+	System.out.println(s1.replace("soft","software"));
+	String ss="Mphasis and Global soft,mumbai";
+	System.out.println(ss);
+                  System.out.println("the length of string="+ss.length());
+	System.out.println(ss.replace("mumbai","Bangalore"));
+	char name[]=s1.toCharArray();//convert string to char array
+	int leng=name.length;
+	System.out.println("length of an array="+leng);
+                  for(int i=0;i<leng;i++)
+	{
+		System.out.println(name[i]);
+	}}}
+----------------------------------------------------------------------
+
+
+
+
+
+
