@@ -239,6 +239,40 @@ System.out.println("the address is "+em.getAddress());
 }
 }
 -----------------------------------------------------------------------------------
+constructor():-
+1) A constructor is a function which has the same name as that of the class name.
+2)A constructor doesnot return any values.
+3)A constructor is mainly use to assign values .because a constructor excute first when a object is created for a class.
+4)There are 2 types of constructor .
+i)default constructor:- A constructor without parameter.
+ii)parameterized constructor :- A constructor with parameter.
+5)A constructor excute auotmatically when an object is created for a class.
+--------------------------------------------------------------------------------------------------
+example:-
+class Firstprg
+{	
+Firstprg()
+{
+	System.out.println("This is default constructor");
+}
+Firstprg(int a,int b)
+{
+	System.out.println("the sum of 2 nos are"+(a+b));
+}
+int sum(int a,int b)//it returns a value
+{	return a+b;}
+public static void main(String[] args) {
+	Firstprg ob=new Firstprg();
+	Firstprg ob1=new Firstprg(5,6);
+	Firstprg ob2=new Firstprg();
+	Firstprg ob3=new Firstprg(15,16);
+	System.out.println("the sum is "+ob.sum(7,8));
+	System.out.println("the sum is "+ob.sum(17,18));
+
+	}}
+
+
+
 
 
 
