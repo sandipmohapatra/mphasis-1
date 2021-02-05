@@ -162,6 +162,83 @@ public class Secondprg
 	System.out.println(s1);
 	}}
 --------------------------------------------------
+toString
+---------------
+class Employee
+{
+	private int empno;
+	private String name;
+	private Address address; //has a relationship
+	public int getEmpno() {
+		return empno;
+	}
+	public void setEmpno(int empno) {
+		this.empno = empno;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+		
+}
+----------------------------------------------------------------
+public class Address 
+{
+private int houseno;
+private String city;
+private String state;
+public int getHouseno() {
+	return houseno;
+}
+public void setHouseno(int houseno) {
+	this.houseno = houseno;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+public String getState() {
+	return state;
+}
+public void setState(String state) {
+	this.state = state;
+}
+@Override
+public String toString() {
+	return "Address [houseno=" + houseno + ", city=" + city + ", state=" + state + "]";
+}
+
+}
+------------------------------------------------------------------------
+public class Mainclass 
+{
+public static void main(String[] args)
+{
+Address ad=new Address();
+ad.setHouseno(101);
+ad.setCity("bangalore");
+ad.setState("karnataka");
+
+Employee em=new Employee();
+em.setEmpno(1001);
+em.setName("Farhan");
+em.setAddress(ad);//we are setting the object of Address here
+System.out.println("the empno is "+em.getEmpno());
+System.out.println("the name is "+em.getName());
+System.out.println("the address is "+em.getAddress());
+}
+}
+-----------------------------------------------------------------------------------
 
 
 
