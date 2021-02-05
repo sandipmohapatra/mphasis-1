@@ -272,7 +272,23 @@ public static void main(String[] args) {
 	}}
 
 
-
+-------------------------------------------------------------
+package First.Friday;
+class Firstprg
+{	
+int empno;//instance variables
+String name;
+	Firstprg(int empno,String name)//local variables
+{
+		this.empno=empno;
+		this.name=name;
+System.out.println("the empno "+empno);
+System.out.println("the name is "+name);
+}
+public static void main(String[] args)
+{
+Firstprg ob=new Firstprg(101,"sandip");
+	}}
 
 
 
