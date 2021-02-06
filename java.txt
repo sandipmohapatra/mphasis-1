@@ -317,6 +317,7 @@ public static void main(String[] args)
 Scanner obj=new Scanner(System.in);
 System.out.println("How many customers want to enter");
 int x=obj.nextInt();
+Firstprg ob2=new Firstprg(101,"prasanna","pune",8000);  //creating single object
 Firstprg[] ob=new Firstprg[x];//to create object array.  <classname>[] object=new <classname>[5];
 	for(int i=0;i<x;i++)
 	{
@@ -325,12 +326,13 @@ int accno=obj.nextInt();
 String name=obj.next();
 String address=obj.next();
 int bal=obj.nextInt();
-ob[i]=new Firstprg(accno,name,address,bal); //to enter data into an array
+ob[i]=new Firstprg(accno,name,address,bal); //to enter data into each array object 
 	}
+	ob2.display();
 	for(int i=0;i<x;i++)
 ob[i].display();
-	
 }}
+
 -----------------------------------------------------------------------------------------
 
 
