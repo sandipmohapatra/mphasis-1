@@ -526,7 +526,34 @@ System.out.println(a);
 display();}}
 
 ----------------------------------------------------------
+final keyword
+-----------------------------
+we can declare a class as final,method as final and variable as final.
+if we declare class as final we cannot inherite it.
+if we declare variable as final we have to assign it and it cannot be changed.
+if we declare method as final we cannot override it.
+-------------------------------------------------------------------------------
 
+pre-defined final class?we cannot change it (immutable).example String class.
+StringBuffer,Integer,
+----------------------------------
+package second.Wednesday;
+
+public final class Finalexample 
+{
+final int a = 10;
+final void display()
+{
+	System.out.println("this is a final method");
+}
+public static void main(String[] args) {
+	Finalexample ob=new Finalexample();
+	//ob.a=20; this is not allowed
+	System.out.println(ob.a);
+	ob.display();
+}
+}
+---------------------------------------------------------------------------------------
 
 
 
