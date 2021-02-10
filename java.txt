@@ -554,9 +554,50 @@ public static void main(String[] args) {
 }
 }
 ---------------------------------------------------------------------------------------
+Abstract class and Interface
+--------------------------------------------
+abstract class is a class which contains abstract methods as well as concrete methods.
+abstract methods are those which donot have method body.
+concrete methods are those which has method body.
+we cannot create object of a abstract class.we have to inherite a abstract class into a subclass.override the abstract methods and create object of the child class.
+--------------------------------------------
+package second.Wednesday;
 
+abstract class Abstractexample1 
+{
+abstract void display();//method without body.
+void display1() //concrete method
+{
+	System.out.println("this is concrete method");
+}
+}
+class BankDetails extends Abstractexample1
+{
 
+	@Override //we are overriding a abstract method
+	void display() {
+		System.out.println("this is a override method");
+		}
+}
+class Abstractexample
+{
+	public static void main(String[] args)
+	{
+		BankDetails obj=new BankDetails();//we cannot instanciate a abstract class.
+		obj.display();
+	}
+}
 
+--------------------------------------------------------------------------
+purpose of abstract class:-
+---------------------------------------
+abstract is a Story or brief about your project.
+abstract class and abstract methods are incomplete class or method.
+example:-
+Bank project---client wants some methods for sure.withdraw(),deposite(),loan(),balancecheck()
+so in the base class/parent class the team lead will declare these methods .
+so that the developers can override and define these methods in the sub-class class.
+--------------------------------------------------------------------------------------------------------------------------
 
 
 
