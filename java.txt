@@ -598,8 +598,45 @@ Bank project---client wants some methods for sure.withdraw(),deposite(),loan(),b
 so in the base class/parent class the team lead will declare these methods .
 so that the developers can override and define these methods in the sub-class class.
 --------------------------------------------------------------------------------------------------------------------------
+Interface 
+--------------------
+1)it is similar abstract class but we donot have concrete methods.(only abstract methods in it)
+2)By interface we can do multiple inheritance.
+3)we donot use the keyword abstract .
+4)we cannot create object of a interface.we have to inherite a interface into a subclass.override the abstract methods and create object of the child class.
+------------------------------------------------------------------------
+package second.Wednesday;
+interface SBIbank
+{
+	void displaybal(); //abstract methods
+}
+interface ICICIBank
+{
+	void displaybalcheck();//abstract methods
+}
 
+public class InterfaceExample implements SBIbank,ICICIBank //multiple inheritance
+{
 
+	@Override
+	public void displaybal() {
+		
+		System.out.println("SBIBank balance check");
+	}
+
+	@Override
+	public void displaybalcheck() {
+		System.out.println("ICICIBank balance check");
+					
+	}
+	public static void main(String[] args) {
+		InterfaceExample ob=new InterfaceExample();
+		ob.displaybal();
+		ob.displaybalcheck();
+	}
+
+}
+----------------------------------------------------------------------
 
 
 
