@@ -652,8 +652,57 @@ public class InterfaceExample implements SBIbank,IDBIBank
 }
 
 ----------------------------------------------------------------------
+Functional Interface :- A functional interface is a interface which has only one abstract method .
 
+--------------------------------
+package Third.wednesday;
 
+interface bank 
+{
+	public void withdraw();
+}
+
+class InterfaceExample
+{
+	public static void main(String[] args) 
+	{
+		int x=10;
+		bank ob=new bank()  //functional Interface
+		{
+			@Override
+			public void withdraw() 
+			{
+				System.out.println("this is override method");
+				System.out.println("the value of x is "+x);
+			}
+		};
+		ob.withdraw();
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+Functional interface using Lambda expression
+-------------------------
+package Third.wednesday;
+@FunctionalInterface
+interface bank 
+{
+	public void withdraw();
+}
+
+class InterfaceExample
+{
+	public static void main(String[] args) 
+	{
+		int x=10;
+		bank ob=()->
+		{//no need to override method
+				System.out.println("this is override method");
+				System.out.println("the value of x is "+x);
+				};
+		ob.withdraw();
+	}}
+--------------------------------------------------
 
 
 
