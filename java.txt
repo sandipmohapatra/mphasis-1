@@ -456,7 +456,51 @@ dev.display();
 }
 }
 ----------------------------------------------------------------
+Using Constructor
+---------------------------
+package second.Wednesday;
+import java.util.*;
+public class Employee //parent class
+{
+	int empno;
+	float salary;
+	String name;
+	public Employee(int empno, float salary, String name)
+	{
+		this.empno = empno;
+		this.salary = salary;
+		this.name = name;
+	}
+	void display()
+	{
+		System.out.println("the empno is "+empno+" salary  is "+salary+"name is "+name );
+	}
+}
+-----------------------------------------------------
+package second.Wednesday;
+import java.util.*;
+public class Developer extends Employee //inherite the parent class into the child class 
+{
+String project,duration;
+public Developer(int empno, float salary, String name, String project, String duration) 
+{
+	super(empno, salary, name);//first the parent class constructor will execute then other will execute
+	this.project = project;
+	this.duration = duration;
+}
+void display()
+{
+	super.display();
+	System.out.println("project name is "+project+" duration is "+duration);
+}
+public static void main(String[] args) 
+{
+Developer dev=new Developer(101,6700.50f,"Nitish","AirLine Reservation system","2 months");
+dev.display();
+}
+}
 
+--------------------------------------------
 
 
 
