@@ -608,14 +608,20 @@ Interface
 package second.Wednesday;
 interface SBIbank
 {
-	void displaybal(); //abstract methods
+	int bal=1000;//if you declare a variable within a interface it is bydefault final and static. 
+	void displaybal();
 }
 interface ICICIBank
 {
-	void displaybalcheck();//abstract methods
+	void displaybalcheck();
 }
 
-public class InterfaceExample implements SBIbank,ICICIBank //multiple inheritance
+interface IDBIBank extends ICICIBank //an interface can extend another interface. 
+{
+	void dispBal();
+}
+
+public class InterfaceExample implements SBIbank,IDBIBank 
 {
 
 	@Override
@@ -631,11 +637,20 @@ public class InterfaceExample implements SBIbank,ICICIBank //multiple inheritanc
 	}
 	public static void main(String[] args) {
 		InterfaceExample ob=new InterfaceExample();
+		System.out.println(bal);
 		ob.displaybal();
 		ob.displaybalcheck();
+		ob.dispBal();
+	}
+
+	@Override
+	public void dispBal() {
+		System.out.println("this is IDBI Bank");
+		
 	}
 
 }
+
 ----------------------------------------------------------------------
 
 
