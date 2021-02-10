@@ -346,6 +346,132 @@ ob[i]=new Firstprg(accno,name,address,bal); //to enter data into each array obje
 
 
 -----------------------------------------------------------------------------------------
+package First.Friday;
+import java.util.*;
+class Firstprg
+{	
+int accno,bal;//instance variables
+String name,address;
+Scanner obj=new Scanner(System.in);
+void input()
+{
+	//this.accno=accno;  //local variable is assigned to instance variable
+		System.out.println("enter accno,name,address,balance");	
+		accno=obj.nextInt();
+		name=obj.next();
+		address=obj.next();
+		bal=obj.nextInt();
+		
+}
+	void display()
+	{
+		System.out.println("Accno :"+accno);
+		System.out.println("Name :"+name);
+		System.out.println("Address :"+address);
+		System.out.println("Balance :"+bal);
+			}
+public static void main(String[] args)
+{
+	Scanner obj=new Scanner(System.in);
+	System.out.println("How many customers want to enter");
+int x=obj.nextInt();
+Firstprg[] ob=new Firstprg[x];//declaring of array object
+	for(int i=0;i<x;i++)
+	{
+ob[i]=new Firstprg();  //object created
+	ob[i].input();
+	//ob[i].display();
+	}
+	System.out.println("enter the accno to search");
+	int temp=obj.nextInt();
+	for(int i=0;i<x;i++)
+	{
+	if(ob[i].accno==temp)
+	{
+	System.out.println("the name is "+ob[i].name);
+	System.out.println("the address is "+ob[i].address);
+	System.out.println("the balance is "+ob[i].bal);
+		}
+	}
+}}
+--------------------------------------------------------------------------
+Inheritance 
+---------------------
+It is a mechanism in which one object acquires all the properties and behaviors of a parent object.
+we can tell code reusability.
+In this we will be having a parent class and a child class.
+we use to keyword in inheritance.1)extend key to inherite the parent class into the child class.
+2)super key word to inherite the variables and methods of parent class into the child class.
+
+Java support single inheritance.(single,multilevel,hierarchical)
+Java doesnot support multiple inheritance. we use interface for multiple inheritance.
+-----------------------------------------------------------------------------------------------
+ 
+Employee class(Parent)
+
+package second.Wednesday;
+import java.util.*;
+public class Employee 
+{
+	int empno;
+	float salary;
+	String name;
+	void input()
+	{
+		Scanner ob=new Scanner(System.in);
+		System.out.println("enter empno,name,salary");
+		empno=ob.nextInt();
+		name=ob.next();
+		salary=ob.nextFloat();
+	}
+	void display()
+	{
+		System.out.println("the empno is "+empno+ "name is "+name+ "salary is "+salary);	
+	}
+}
+----------------------------------------------------------------------
+package second.Wednesday;
+import java.util.*;
+public class Developer extends Employee //inherite the parent class into the child class 
+{
+String project,duration;
+void input() //method overridding 
+{
+	super.input(); // to access the parent method into the child class.
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter project name,duration of project");
+	project=ob.next();
+	duration=ob.next();
+}
+void display()
+{
+	super.display();
+	System.out.println("the project name is "+project+ " project duration is "+duration);
+}
+public static void main(String[] args) 
+{
+Developer dev=new Developer();
+dev.input();
+dev.display();
+}
+}
+----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
