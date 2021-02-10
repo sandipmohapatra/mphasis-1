@@ -703,6 +703,67 @@ class InterfaceExample
 		ob.withdraw();
 	}}
 --------------------------------------------------
+Lambda function with parameter
+------------------------------------------
+package Third.wednesday;
+//with parameter
+@FunctionalInterface
+interface bank 
+{
+	public int withdraw(int amount);
+}
+
+class InterfaceExample
+{
+	public static void main(String[] args) 
+	{
+		bank ob=(amount)->
+		{
+				return amount;
+						};
+						System.out.println("the withdrawal amount is "+ob.withdraw(1000));
+		
+	}}
+
+--------------------------------------------------------------------------
+package Third.wednesday;
+//with multiple parameter
+@FunctionalInterface
+interface bank 
+{
+	public int withdraw(int amount1,int amount2);
+}
+
+class InterfaceExample
+{
+	public static void main(String[] args) 
+	{
+		bank ob=(amount1,amount2)->(amount1+amount2);
+		{
+			System.out.println("the withdrawal amount is "+ob.withdraw(1000,2000));
+					};
+						
+	}}
+-------------------------------------------------------------------------------------------
+package Third.wednesday;
+//with multiple parameter with return
+@FunctionalInterface
+interface bank 
+{
+	public int withdraw(int amount1,int amount2);
+}
+
+class InterfaceExample
+{
+	public static void main(String[] args) 
+	{
+		bank ob=(amount1,amount2)->
+		{
+			return (amount1+amount2);
+					};
+					System.out.println("the withdrawal amount is "+ob.withdraw(1000,2000));			
+	}}
+---------------------------------------------------------------------------------------------
 
 
 
