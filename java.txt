@@ -659,7 +659,7 @@ package Third.wednesday;
 
 interface bank 
 {
-	public void withdraw();
+	public void withdraw();//abstract method
 }
 
 class InterfaceExample
@@ -720,8 +720,8 @@ class InterfaceExample
 		bank ob=(amount)->
 		{
 				return amount;
-						};
-						System.out.println("the withdrawal amount is "+ob.withdraw(1000));
+		};
+		System.out.println("the withdrawal amount is "+ob.withdraw(1000));
 		
 	}}
 
@@ -761,11 +761,92 @@ class InterfaceExample
 		{
 			return (amount1+amount2);
 					};
-					System.out.println("the withdrawal amount is "+ob.withdraw(1000,2000));			
+			System.out.println("the withdrawal amount is "+ob.withdraw(1000,2000));			
 	}}
 ---------------------------------------------------------------------------------------------
+Exception Handling/Error Handling
+----------------------------------------------------
+There are three types of errors
+1)logical error/syntax error
+2)Giving wrong input during runtime(wrong datatype)
+3)Spelling mistake or missing of semi-colon etc.
+-----------------------------------------------------------------------------------
+Exception handling deals with runtime errors.
+example:- 
+1)divide a number by zero
+2)in place of integer passing String datatype
+3)crossing the array limit.
+4)reading/writing data into a file which is not present.
+etc.
+------------------------------------------------------------------
+The main purpose of exception handling is to handle the error and stopping the program from terminating in between.
+So that the program should excecute till the end .
+The super class of exception is Throwable.
+Throwable
+i)Exception
+ii)error
+---------------------------------------------
+we have 5 keywords used to handle the runtime error.
+1)try
+2)catch
+3)finally
+4)throw
+5)throws
+----------------------------------------------------------------------
+ Example 1:
+package First.exception;
+import java.util.*;
+public class ExceptionExample1 
+{
+public static void main(String[] args) 
+{	try	{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter 2 nos");
+	int a=ob.nextInt();
+	int b=ob.nextInt();
+	int c=a/b;
+	System.out.println("the result is "+c);
+	}
+	catch(Exception ae)
+	{
+		System.out.println("This Exception is :"+ae);
+	}
+	System.out.println("This is divide by zero error");
+}}
+---------------------------------------------------------------
+try-catch :-
+In this if try is success then the catch is also success.Means there is error in try then the catch will display error message.
+If try is failure means noo error then catch is also failure.The control will not flow inside the catch block.
+--------------------------------------------------------------
+try with multiple catch
+--------------------------
+package First.exception;
+import java.util.*;
+public class ExceptionExample1 
+{
+public static void main(String[] args) 
+{	try	{
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter 2 nos");
+	int a=ob.nextInt();
+	int b=ob.nextInt();
+	int c=a/b;
+	System.out.println("the result is "+c);
+	}
+	catch(ArithmeticException ae) //handle specific exception
+	{
+		System.out.println("This Exception is :"+ae);
+	}
+catch(Exception ae)//handle all types of exception
+{
+	System.out.println("Exception is :"+ae);
+}
+	System.out.println("This is divide by zero error");
+	}
+}
+---------------------------------------------------------------------------------------------- 
 
-
+  
 
 
 
