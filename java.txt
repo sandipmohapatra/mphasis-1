@@ -1053,7 +1053,7 @@ int x=a;//unboxing
 System.out.println(x);
 }}
 ---------------------------------------------------------
-example-1
+example-1(TreeSet -display in shorted order)
 -----------------
 package org.Collection;
 import java.util.TreeSet;
@@ -1109,6 +1109,45 @@ public class Collectionexample1
 	System.out.println(ts);
 }}
 -----------------------------------------------------------------------------------------
+example -3(LinkedHashSet :- it will display in the same order)
+package org.Collection;
+import java.util.*;
+public class Treeexample 
+{
+public static void main(String[] args) 
+{
+	LinkedHashSet ts=new LinkedHashSet();
+Integer x=new Integer(3);//x is an object which store int datatype value.
+ts.add(10);//wraps the int to an object and store.
+ts.add(14);
+ts.add(56);
+ts.add(67);
+ts.add(8);
+ts.add(x);
+System.out.println(ts);
+}
+}
+------------------------------------------------
+example-4(HashSet:- This will display data in random order )
+package org.Collection;
+import java.util.*;
+public class Treeexample 
+{
+public static void main(String[] args) 
+{
+	HashSet ts=new HashSet();
+Integer x=new Integer(3);//x is an object which store int datatype value.
+ts.add(10);//wraps the int to an object and store.
+ts.add(14);
+ts.add(56);
+ts.add(67);
+ts.add(8);
+ts.add(x);
+System.out.println(ts);
+}
+}
+-------------------------------------------------------------------
+
 
 
 
