@@ -948,7 +948,30 @@ example :- ArithmaticException,ArrayIndexOutOfBound,InputMisMatch
 Checked Exceptions are compile time exception.
 example:-IOException,SQLException,InterruptedException.
 ----------------------------------------------------------------------------------------------
-
+throw exception:-
+------------------------------
+This is used for user defined exception.
+example:- marks should be greater than zero.
+salary should be greater than 15k.
+etc.
+-------------------------------------------------------------------------------------------------
+example:-
+package First.exception;
+import java.util.*;
+public class ExceptionExample1 
+{
+public static void main(String[] args) throws Exception  
+{	
+Scanner ob=new Scanner(System.in);
+System.out.println("enter your salary");
+int salary=ob.nextInt();
+if(salary>15000)
+System.out.println("your salary processed is ok");
+else
+	throw new Exception("salary should be greater than 15000");
+}
+}
+---------------------------------------------------------------------------------------------------
 
 
 
