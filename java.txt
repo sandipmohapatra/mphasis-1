@@ -869,7 +869,79 @@ public static void main(String[] args)
 
 ---------------------------------------------------------------------------------------------- 
 
-  
+  try-catch-finally
+-----------------------------------------
+package First.exception;
+import java.util.*;
+public class ExceptionExample1 
+{
+public static void main(String[] args) 
+{	try{
+	int a[]=new int[5];		
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter 5 nos");
+	for(int i=0;i<5;i++)
+	a[i]=ob.nextInt();
+	
+	System.out.println("5 nos are");
+	for(int i=0;i<5;i++)
+	System.out.println(a[i]);
+	}
+	catch(ArrayIndexOutOfBoundsException ae)
+	{	
+		System.out.println("Exception is :"+ae);
+		}
+finally
+{
+	System.out.println("we are inside finally block");
+}
+}}
+---------------------------------------------------------
+try-finally :-
+In this the try is success or not it does not matter the finally block will definately exceute.
+So Closing of connection,closing of class etc are written inside finally block.
+
+package First.exception;
+import java.util.*;
+public class ExceptionExample1 
+{
+public static void main(String[] args) 
+{	try{
+	int a[]=new int[5];		
+	Scanner ob=new Scanner(System.in);
+	System.out.println("enter 5 nos");
+	for(int i=0;i<5;i++)
+	a[i]=ob.nextInt();
+	
+	System.out.println("5 nos are");
+	for(int i=0;i<=5;i++)
+	System.out.println(a[i]);
+	}
+	finally
+{
+	System.out.println("we are inside finally block");
+}
+}}
+------------------------------------------------------------------------------
+throws exception :- this is used to handle mostly checked exception.
+it does have body so the lines of code will be reduced.
+-------------------------
+package First.exception;
+import java.util.*;
+public class ExceptionExample1 
+{
+public static void main(String[] args) throws InterruptedException 
+{	
+	for(int i=1;i<=10;i++)
+	{
+		Thread.sleep(1000);
+System.out.println("This is delay of control");		
+	}
+	System.out.println("This is the End");		
+	
+}
+}
+------------------------------------------------------------------------
 
 
 
