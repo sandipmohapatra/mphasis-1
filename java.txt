@@ -942,6 +942,12 @@ System.out.println("This is delay of control");
 }
 }
 ------------------------------------------------------------------------
+Unchecked Exceptions are runtion time exceptions.
+example :- ArithmaticException,ArrayIndexOutOfBound,InputMisMatch
+
+Checked Exceptions are compile time exception.
+example:-IOException,SQLException,InterruptedException.
+----------------------------------------------------------------------------------------------
 
 
 
