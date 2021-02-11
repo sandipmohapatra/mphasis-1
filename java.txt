@@ -972,6 +972,161 @@ else
 }
 }
 ---------------------------------------------------------------------------------------------------
+Collection framework
+-----------------------------------------
+Collections in java is a framework that provides an architecture to store and manipulate the group of objects.
+All the operations that you perform on a data such as searching, sorting, insertion, manipulation, deletion etc. can be performed by Java Collections. 
+
+Java Collection simply means a single unit of objects. Java Collection framework provides many interfaces (Set, List, Queue, Deque) and classes (ArrayList, Vector, LinkedList,HashSet,LinkedHashSet, TreeSet etc).
+---------------------------------------------------
+array :-  int a[]=new int[5];//array size is assigned
+but in collection the size is dynamic.it expands as we enter the elements....
+1)set(interface):-(classes)TreeSet,HashSet,LinkedHashSet
+2)list (interface):-(classes)LinkedList,ArrayList,Vector,Stack
+3)map(interface):-(classes)HashTable,HashMap
+4)Queue (interface) maintains the first-in-first-out order.(classes) PriorityQueue, Deque, and ArrayDeque.
+
+1.set(interface)->
+Does not allow duplicate value.
+HashSet,LinkedHashSet,TreeSet(classes).
+a.Hashset->Display elements in random order.
+b.LinkedHashSet ->it displays in the same order.
+c.TreeSet ->It display in the sorted order.
+
+
+
+------------------------------------------------------------------
+
+2.List->
+It allows duplicate value.
+Stack,ArrayList,Linkedlist,Vector
+Stack:FILO .the last element will be arr[0].
+Linked List:it displays in same order.
+-----------------------------
+list iterator is used to view data forward and backward
+-----------------------------------------------------------------------------------------
+3.Map->
+HashMap:-we enter Key and value pair
+HashTable:-we enter Key and value pair
+
+*The HashMap class is roughly equivalent to Hashtable, except that it is unsynchronized and permits nulls. 
+(HashMap allows null values as key and value whereas Hashtable doesnt allow). 
+HashMap does not guarantee that the order of the map will remain constant every time. 
+HashMap is unsynchronized and Hashtable is synchronized.
+
+Key-value
+key should be unique- but value can be duplicate
+-----------------------------------------------------------------------------------------
+ note:Iterator,ListIterator and enumeration are interfaces which contains the set of methods. with the help of these methods we can retrieve objects from the collection of classes.
+-------------------------------------
+Iterator:three methods:hasNext();next();remove();
+----------------------------------------------------------------------------------------
+Vector is synchronized whereas arraylist is not.
+---------------------------------------------------------------------------------------
+
+
+Autoboxing and Unboxing
+autoboxing :- converting of primative datatype into its equivalent wrapper type is known as boxing.(int to Integer)
+unboxing:-converting wrapper type into primative datatype is known as unboxing.(Integer to int)
+------------------------------------------
+example of autoboxing
+-----------------------------------
+class autobox
+{
+public static void main(String h[])
+{
+int a=50;
+Integer b=new Integer(a);//boxing
+Integer c=5;//boxing
+System.out.println(b);
+System.out.println(c);
+}}
+-----------------------------------------------------------
+example of unboxing
+-----------------------------------
+class unbox
+{
+public static void main(String h[])
+{
+Integer a=new Integer(50);
+int x=a;//unboxing
+System.out.println(x);
+}}
+---------------------------------------------------------
+example-1
+-----------------
+package org.Collection;
+import java.util.TreeSet;
+public class Treeexample 
+{
+public static void main(String[] args) 
+{
+TreeSet ts=new TreeSet();
+Integer x=new Integer(3);//x is an object which store int datatype value.
+ts.add(10);//wraps the int to an object and store.
+ts.add(14);
+ts.add(56);
+ts.add(67);
+ts.add(8);
+ts.add(x);
+System.out.println(ts);
+}
+}
+
+---------------------------------------------------------------------------------------
+example-2
+--------------------
+package org.Collection;
+public class employee 
+{
+int empno;
+String name,address;
+
+public employee(int empno, String name, String address) {
+	super();
+	this.empno = empno;
+	this.name = name;
+	this.address = address;
+}
+
+@Override
+public String toString() {
+	return "employee [empno=" + empno + ", name=" + name + ", address=" + address + "]";
+}
+
+}
+---------------------------------------------------------------------
+package org.Collection;
+import java.util.*;
+public class Collectionexample1
+{public static void main(String[] args) 
+{
+	LinkedList ts=new LinkedList();
+	employee e=new employee(101,"delip","hyd");
+	employee e1=new employee(102,"satya","hyd");
+	ts.add(e);
+	ts.add(e1);
+	System.out.println(ts);
+}}
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
