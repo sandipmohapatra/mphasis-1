@@ -1398,6 +1398,49 @@ class hashmap
 }}
 
 -----------------------------------------------------------------------
+HashMap :- in this we enter key and value pair.
+Set set=hs.entrySet(); //HashMap is converted to set we have entrySet() in HashMap .Returns a Set view of the 			mappings contained in this map 
+     Iterator itr=set.iterator();
+     while(itr.hasNext())
+     {
+     Map.Entry en=(Map.Entry)itr.next();//typecasting the next() element with Map.Entry 
+     System.out.println(en.getKey()+"   "+en.getValue());//Map.Entry has 2 methods getKey() and getValue()
+----------------------------------------------------------------------------------------
+example-15
+----------------------
+package org.Collection;
+import java.util.*;
+class hashmap
+{
+   public static void main(String args[]) 
+{
+     Scanner obj=new Scanner(System.in);
+     System.out.println("enter the key and name");
+     int b=obj.nextInt();
+     String st=obj.next();
+     HashMap hs=new HashMap();
+     hs.put(1,"raj");
+     hs.put(2,"seetha");
+     hs.put(3,"reeta");
+     System.out.println(hs);
+     hs.put(4,"meetha");
+     hs.put(5,"venu");
+     hs.put(6,"pankaj");
+     hs.put(7,"raj");
+     hs.put(10,"lakshmi");
+     hs.put(10,"lllll");
+     hs.put(b,st);
+     System.out.println(hs);
+     Set set=hs.entrySet(); //
+     Iterator itr=set.iterator();
+     while(itr.hasNext())
+     {
+     Map.Entry en=(Map.Entry)itr.next();
+     System.out.println(en.getKey()+"   "+en.getValue());
+     }     
+}}
+--------------------------------------------------------------------------------------------------
+
 
 
 
