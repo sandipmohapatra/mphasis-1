@@ -1258,7 +1258,7 @@ public class Treeexample
 	System.out.println(ss.search(200));//display -1 if not there     
 	  }	}
 ------------------------------------------------------------------------------------
-example-10
+example-10(LinkedList :- adding two liked list)
 package org.Collection;
 import java.util.*;
 public class Treeexample 
@@ -1283,9 +1283,31 @@ public class Treeexample
 		  System.out.println(ll);
 	  }	}
 
--------------------------------------------------------------------------------
-
-
+------------------------------------------------------------------------------------------------
+//w.ap to create a employee class having empno,name,salary,designation.
+store the employee object in a ArrayList and display it.
+Enter the data at the run time.
+---------------------------------------------------------------------------------------------------------
+Example-11
+package org.iiht.com;
+import java.util.*;
+public class ArrayListExample
+{
+public static void main(String[] args) {
+	ArrayList<String> list=new ArrayList<String>();
+	list.add("Mango");
+	list.add("Apple");
+	list.add("Banana");
+	list.add("Grapes");
+	Collections.sort(list);//collection class has static methods like sort to sort the elements .
+	Iterator itr=list.iterator();
+	while(itr.hasNext())//return boolean value
+	{
+		System.out.println(itr.next());//returns the next element in the iteration
+	}
+}
+}
+------------------------------------------------------------------------------------
 
 
 
