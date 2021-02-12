@@ -1460,11 +1460,13 @@ class MapExample2{
 example-17
 --------------------
 import java.util.*;    
-class Book {    
+class Book 
+{    
 int id;    
 String name,author,publisher;    
 int quantity;    
-public Book(int id, String name, String author, String publisher, int quantity) {    
+public Book(int id, String name, String author, String publisher, int quantity) 
+{    
     this.id = id;    
     this.name = name;    
     this.author = author;    
@@ -1496,6 +1498,137 @@ public static void main(String[] args) {
 }    
 }    
 ------------------------------------------------------------------------------------------
+Assignment
+----------------------
+In a cruise there are 3 types of tickets.
+1)crew member :- free
+2)Adult above 10 years:- Rs 500
+3)Children below 10 years :-Rs 250
+Enter details of all the passengers and count no of crew members ,Adult and children traveling .
+Also display the details of all the travellers.Using HashMap.
+
+----------------------------------------------------------------------------------------------------------
+example-18
+------------------
+package org.Collection;
+import java.util.*;  
+public class HashMap2 {  
+   public static void main(String args[]) {  
+    HashMap<Integer,String> map=new HashMap<Integer,String>();          
+      map.put(100,"Amit");    
+      map.put(101,"Vijay");    
+      map.put(102,"Rahul");  
+      map.put(103, "Gaurav");  
+    System.out.println("Initial list of elements: "+map);  
+    //key-based removal  
+    map.remove(100);  
+    System.out.println("Updated list of elements: "+map);  
+     //key-value pair based removal  
+    map.remove(102, "Rahul");  
+    System.out.println("Updated list of elements: "+map);  
+   }      
+}  
+--------------------------------------------------------------------------------------------------
+Example-19
+---------------------
+package org.Collection;
+import java.util.*;
+public class CruiseClass  {
+    public static void main(String[] args) 
+    {
+    MemberType ob;    	
+    	Scanner sc = new Scanner(System.in);
+        
+        Map<Integer,MemberType> mapValue = new HashMap<Integer,MemberType>();
+        
+        System.out.println("Enter the Number of Travelers You want On the Cruise");
+        
+        
+        int num = sc.nextInt();
+        
+        for(int i=1; i<=num; i++) 
+        {
+            mapValue.put(i, new MemberType());
+        }
+        
+        //System.out.println("The Values are: "+mapValue.toString());
+        
+        for(Map.Entry<Integer, MemberType> entry:mapValue.entrySet()){    
+            int key=entry.getKey();  
+            MemberType b=entry.getValue();  
+            System.out.println(key+" Data:");  
+            System.out.println("Name: " + b.name + "\nAge: " + b.age + "\nMember Type: " + b.memberTypes+"\nFees: "+b.fee);    
+            } 
+        
+       System.out.println(MemberType.countMembers());
+        
+    }
+}
+-------------------------------------------------------------------
+package org.Collection;
+import java.util.*;
+public class MemberType {
+    
+    int age;
+    String name;
+    int memberType;
+    String memberTypes;
+    static int countCrew,countAdult,countChild;
+    int fee;
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public MemberType() 
+    {
+        System.out.println("Enter Your Age");
+        this.age=scan.nextInt();
+        System.out.println("Enter Your Name");
+        this.name=scan.next();
+        
+        if(age>20) {
+        
+            System.out.println("Type 1 for Crew Member or 2 for Adults");
+        
+            this.memberType=scan.nextInt();
+        
+    if(memberType==1) 
+        {
+            this.memberTypes="Crew";
+            countCrew++;
+            fee=0;
+        }
+        else if(memberType==2) 
+        {
+            this.memberTypes="Adult";
+            countAdult++;
+            fee=500;
+        }
+        }
+                else 
+        {
+            this.memberTypes="Children";
+            countChild++;
+            fee=250;
+        }
+        }
+     public static String countMembers() {
+        
+        return "Number of Crew Members: "+countCrew+"\nNumber of Adults: "+countAdult+"\nNumber of Children: "+countChild;
+    }   
+}
+
+-------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
