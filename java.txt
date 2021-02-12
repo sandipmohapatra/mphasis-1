@@ -1346,8 +1346,31 @@ public static void main(String[] args) {
 }
 }
 -------------------------------------------------------------------------------------------
-
-
+Create a class Bank having accno,name,balance,phoneno
+insert the data and search the data according to accno.
+if you enter a accno it should display all information.
+----------------------------------------------------------------------------------- 
+Example-13
+package org.Collection;
+import java.util.*;
+class linklist_listiterator
+{
+   public static void main(String args[])  
+{
+LinkedList ll=new LinkedList();
+ll.add(10);ll.add(40);ll.add(20);ll.add(80);ll.add(90);ll.add(50);
+ListIterator ii=ll.listIterator();
+System.out.println("forward direction");
+while(ii.hasNext())
+   {
+     System.out.println(ii.next());
+}
+System.out.println("backward direction");
+while(ii.hasPrevious())
+   {
+     System.out.println(ii.previous());
+}}}
+----------------------------------------------------------------------------
 
 
 
