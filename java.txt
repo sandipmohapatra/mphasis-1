@@ -1308,6 +1308,44 @@ public static void main(String[] args) {
 }
 }
 ------------------------------------------------------------------------------------
+Example-12
+package org.iiht.com;
+
+public class Student
+{
+int rollno;
+String name;
+int age;
+Student(int rollno,String name,int age)
+{
+	this.rollno=rollno;
+	this.name=name;
+	this.age=age;
+}
+}
+---------------------------------------------------
+package org.iiht.com;
+import java.util.ArrayList;
+import java.util.Iterator;
+public class ArrayListExample1 
+{
+public static void main(String[] args) {
+	Student s1=new Student(101,"amit",22);
+	Student s2=new Student(102,"sandip",23);
+	Student s3=new Student(103,"kiran",24);
+	ArrayList<Student> ob1=new ArrayList<Student>();
+	ob1.add(s1);
+	ob1.add(s2);
+	ob1.add(s3);
+	Iterator itr=ob1.iterator();
+	while(itr.hasNext())
+	{
+	Student st=(Student)itr.next();//typecasting the itr object to student type and stored in st object.
+	System.out.println(st.rollno+"  "+st.name+" "+st.age);
+	}
+}
+}
+-------------------------------------------------------------------------------------------
 
 
 
