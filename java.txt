@@ -1652,8 +1652,7 @@ methods of Thread:-
 
 4)start():-Start a thread by calling the run method.
 
-5)yield():-this method pauses the currently executing thread temporarily for giving chance to the remaining waiting threads of same priority to execute. if there is no 
-waiting thread or all the waiting thread have a lower
+5)yield():-this method pauses the currently executing thread temporarily for giving chance to the remaining waiting threads of same priority to execute. if there is no waiting thread or all the waiting thread have a lower
 priority then the same thread will continue its execution.
 
 6)join():-The join() method of thread class waits for a thread to die. It is used when you want one thread to wait for completion of another. This process is like a relay race where the second runner waits until the first runner comes and hand over the flag to him.
@@ -1806,7 +1805,33 @@ public void run()
 			}
 }
 -------------------------------------------------------------------------------------------
-
+Example-3
+------------------
+package org.iiht.com;
+public class JavaYieldExp extends Thread  
+{  
+    public void run()  
+    {  
+        for (int i=0; i<3 ; i++)  
+            System.out.println(Thread.currentThread().getName() + " in control");  
+    }  
+    public static void main(String[]args)  
+    {  
+        JavaYieldExp t1 = new JavaYieldExp();  
+        JavaYieldExp t2 = new JavaYieldExp();  
+        t1.start();  
+        t2.setPriority(10);
+        t2.start();  
+        System.out.println(t1.getPriority());
+        System.out.println(t2.getPriority());
+             for (int i=0; i<3; i++)  
+        {  
+                        t1.yield();  
+            System.out.println(Thread.currentThread().getName() + " in control");  
+        }  
+    }  
+}  
+-------------------------------------------------------------------------------------------------
 
 
 
