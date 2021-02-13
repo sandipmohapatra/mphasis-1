@@ -1997,8 +1997,8 @@ CREATE OR REPLACE FUNCTION get_accounts(
 AS
   x account1%ROWTYPE;
 BEGIN
-  SELECT * INTO   l_cust_record FROM   account1 WHERE  account_id = Acc_id;
-  RETURN l_cust_record;
+  SELECT * INTO   x FROM   account1 WHERE  account_id = Acc_id;
+  RETURN x;
 END;
 /
 -----------------------------------------------------------------------------------
@@ -2010,7 +2010,43 @@ BEGIN
 END;
 /
 ------------------------------------------------------------------------------------------------------------
+Example-8
+------------------------
+package org.iiht.com;
+class First implements Runnable
+{
+	int available=2;
+	synchronized public void run()
+	{	
+		try	
+		{
+		Thread t=Thread.currentThread();
+		String name=t.getName();
+		if(available>0)
+		{
+			System.out.println(name+"  got the ticket");
+			System.out.println("ticket printing.......");
+			Thread.sleep(2000);
+			available=available-1;
+		}
+		else
+		{	System.out.println(name+"   sorry no ticket....");	}
 
+	}catch(Exception e){}	
+		}}
+class Second
+{
+	public static void main(String args[]) throws Exception
+	{ 
+		First obj=new First();
+		new a();
+		Thread t1=new Thread(obj,"Surya");
+		Thread t2=new Thread(obj,"Kiran");
+		Thread t3=new Thread(obj,"Yash");
+		t1.start();       t2.start();       t3.start();
+	}
+}
+----------------------------------------------------------------------
 
 
 
