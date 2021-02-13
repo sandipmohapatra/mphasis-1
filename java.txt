@@ -1698,6 +1698,23 @@ be deadlock.
 ------------------------------------------------------------------------------------------------------
 Example-1
 -----------------
+Flow of Program :-
+1)we created 3 classes Thread1,Thread2,Thread3 each having run().
+2)start() method will call the run().
+3)we created objects of each class. 
+Thead1 obj=new Thead1();
+Thead2 obj1=new Thead2();
+Thead3 obj2=new Thead3();
+4)we called the run methods of each class by using start method.
+obj.start();
+obj1.start();   
+obj2.start();
+5)all the run methods start exceuting concurrently
+6)to see that which thread is excuting we use a method
+Thread.currentThread().getName() 
+7)JVM will allocate the first thread as Thread-0
+----------------------------------------------------------------------------
+
 package org.iiht.com;
 class Thead1 extends Thread 
 {
@@ -1708,8 +1725,9 @@ public void run()
 		System.out.println(i);
 		try {
 			sleep(1000);
-		} catch (InterruptedException e) {
-						e.printStackTrace();
+		} catch (InterruptedException e) 
+		{
+		e.printStackTrace();
 		}
 	}
 }
@@ -1724,7 +1742,7 @@ public void run()
 		try {
 			sleep(1000);
 		} catch (InterruptedException e) {
-						e.printStackTrace();
+		e.printStackTrace();
 		}
 	}
 }}
@@ -1738,7 +1756,7 @@ public void run()
 		try {
 			sleep(1000);
 		} catch (InterruptedException e) {
-						e.printStackTrace();
+		e.printStackTrace();
 		}
 	}
 	}}
