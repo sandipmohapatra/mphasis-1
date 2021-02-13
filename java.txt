@@ -1980,6 +1980,40 @@ class Second implements Runnable
 		t3.start();
 	}}
 --------------------------------------------------------------
+Function return a row
+--------------------------------------------
+CREATE TABLE account1 (
+ account_id INT,
+ name VARCHAR2(20),
+address varchar2(20)
+);
+--------------------------------------
+account1%rowtype:- Indicate the all datatypes of the row of account1;
+------------------------------------------------------------------------------------------
+INSERT INTO account1 VALUES ( 1, 'Satya','Hyderabad' );
+-----------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION get_accounts(
+  Acc_id IN Account1.account_id%TYPE) RETURN account1%ROWTYPE
+AS
+  x account1%ROWTYPE;
+BEGIN
+  SELECT * INTO   l_cust_record FROM   account1 WHERE  account_id = Acc_id;
+  RETURN l_cust_record;
+END;
+/
+-----------------------------------------------------------------------------------
+DECLARE
+  r_acct ACCOUNT1%ROWTYPE;
+BEGIN
+  r_acct := get_accounts( 1 );
+  DBMS_OUTPUT.PUT_LINE( r_acct.name ||' ' || r_acct.address);
+END;
+/
+------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 
