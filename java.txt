@@ -2461,6 +2461,64 @@ public static void main(String[] args) throws Exception
 	System.out.println("row updated");
 }}
 ----------------------------------------------------------------------
+example-5
+-------------------------
+ public static void main(String[] args) throws Exception
+    {
+        Scanner ob=new Scanner(System.in);
+        Class.forName("oracle.jdbc.driver.OracleDriver");//loading of driver class
+        Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","admin");
+        PreparedStatement ps=con.prepareStatement("delete from farhan where empno=?");
+        System.out.println("enter empno");
+        int empno=ob.nextInt();
+        ps.setInt(1, empno);
+        ps.execute();
+        System.out.println("row Deleted");
+    }
+-------------------------------------------------------------------
+Story
+-----------
+WAP in java using case and switch.
+create a bank table having fields accno,name,balance
+A person can deposite 
+A person can withdraw amount.
+A person can close his account.
+Display the final table in oracle.
+---------------------------------------------------------------------------------------------
+example-6
+----------------------
+package org.mphasis.jdbc;
+import java.sql.*;
+import java.util.*;
+public class Firstjdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Scanner ob=new Scanner(System.in);
+	Class.forName("oracle.jdbc.driver.OracleDriver");//loading of driver class
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+	Statement st=con.createStatement();
+	ResultSet rs=st.executeQuery("select * from farhan");
+	while(rs.next())
+	{
+	System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));	
+	}
+	}}
+-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
