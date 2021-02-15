@@ -2194,6 +2194,43 @@ System.out.println("file isdirectory:"+f.isDirectory());
 System.out.println("file length:"+f.length());
 }}}   
 ----------------------------------------------------------------------------------------------------------------
+Example-2
+-----------------------
+import java.io.*;
+class Second
+{   
+	public static void main(String args[]) throws IOException 
+	{
+	DataInputStream dis=new DataInputStream(System.in);//input from the keyboard or read from the keyboard
+	FileOutputStream fos=new FileOutputStream("pqr.doc");//output to a file or write into the file.
+	System.out.println("enter the text");
+	int ch;
+	while((ch=dis.read())!='\n')
+	{
+		fos.write(ch);
+	}
+	fos.close();
+	}}
+------------------------------------------
+Example-3
+--------------------------
+//copy data from one file to file
+import java.io.*;
+class d
+{  
+     public static void main(String args[]) throws Exception
+      {
+FileInputStream fis=new FileInputStream("First.txt");//read the data from the file. 
+FileOutputStream fos=new FileOutputStream("demo2.doc");//write the data from the file.
+int ch;
+while((ch=fis.read())!=-1)//-1 indicates the end of the file.
+{
+fos.write(ch);
+}
+fis.close();fos.close();
+System.out.println("file copied.....");
+ }}
+--------------------------------------------------------
 
 
 
