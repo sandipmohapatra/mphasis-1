@@ -2380,8 +2380,12 @@ public static void main(String[] args) throws Exception
 	Statement st=con.createStatement();
 	//st.execute("create table farhan(empno number,name varchar2(30),address varchar2(30))");
 	//System.out.println("Table created");
-	st.execute("insert into farhan values(101,'farhan','Calcutta')");
-	System.out.println("Row insereted");
+	//st.execute("insert into farhan values(101,'farhan','Calcutta')");
+	//System.out.println("Row insereted");
+	//st.execute("update farhan set address='Bangalore' where empno=101");
+	//System.out.println("Row updated");
+	st.execute("delete from farhan where empno=101");
+	System.out.println("Row deleted");
 		
 }
 }
