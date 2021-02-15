@@ -2365,7 +2365,27 @@ catch(ClassNotFoundException c)
 }
 
 -----------------------------------------------------------------------------------
-
+JDBC
+-----------
+example-1
+--------------------
+package org.mphasis.jdbc;
+import java.sql.*;
+public class Firstjdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Class.forName("oracle.jdbc.driver.OracleDriver");//loading of driver class
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+	Statement st=con.createStatement();
+	//st.execute("create table farhan(empno number,name varchar2(30),address varchar2(30))");
+	//System.out.println("Table created");
+	st.execute("insert into farhan values(101,'farhan','Calcutta')");
+	System.out.println("Row insereted");
+		
+}
+}
+--------------------------------------------------------------------------
 
 
 
