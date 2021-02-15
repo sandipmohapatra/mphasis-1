@@ -2415,6 +2415,28 @@ public static void main(String[] args) throws Exception
 }}
 
 --------------------------------------------------------
+example-3
+--------------------
+package org.mphasis.jdbc;
+import java.sql.*;
+import java.util.*;
+public class Firstjdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Scanner ob=new Scanner(System.in);
+	Class.forName("oracle.jdbc.driver.OracleDriver");//loading of driver class
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+	PreparedStatement ps=con.prepareStatement("insert into farhan(empno,name) values(?,?)");
+	System.out.println("enter empno,name");
+	int empno=ob.nextInt();
+	String name=ob.next();
+	ps.setInt(1, empno);
+	ps.setString(2,name);
+	ps.execute();
+	System.out.println("row inserted");
+}}
+--------------------------------------------------
 
 
 
