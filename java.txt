@@ -2645,6 +2645,16 @@ con.close();
 }  
 } 
 -----------------------------------------------------
+Using mySql and Statement do 
+i)insert
+ii)update
+iii)delete
+-----------------------------------------------------
+do using PrepareStatement
+i)insert
+ii)update
+iii)delete
+-----------------------------------------------------
 Real Time :-
 
 1)connection class
@@ -2663,7 +2673,85 @@ ii)update
 iii)delete
 iv)view
 ---------------------------------------------------------------
+DAO example
+-----------------------
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+public class DbUtil {
 
+	private DbUtil() {}
+
+	public static Connection getConnection() throws DaoException {
+		try {
+			String driver, url, user, password;
+			driver = "com.mysql.jdbc.Driver";
+			url = "jdbc:mysql://localhost/sandip";
+			user = "root";
+			password = "1234";
+
+			Class.forName(driver);
+			return DriverManager.getConnection(url, user, password);
+		} catch (Exception e) {
+			throw new DaoException(e);
+		}
+	}
+
+	public static void releaseResource(Connection conn, Statement stmt, ResultSet rs)
+			throws DaoException {
+		try {
+			if(rs!=null){
+				rs.close();
+			}
+			if(stmt!=null){
+				stmt.close();
+			}
+			if(conn!=null){
+				conn.close();
+			}
+		} catch (Exception e) {
+			throw new DaoException(e);
+		}
+	}
+
+}
+------------------------------------------------------
+public class DaoException extends Exception 
+{
+
+	private static final long serialVersionUID = 1L;
+
+	public DaoException() {
+	}
+
+	public DaoException(String message) {
+		super(message);
+	}
+
+	public DaoException(Throwable obj) {
+		super(obj);
+	}
+	
+	
+}
+-------------------------------------------------------------------
+import java.sql.*;
+import java.util.*;
+public class Firstjdbc 
+{
+public static void main(String[] args) throws Exception
+{
+	Scanner ob=new Scanner(System.in);
+	Connection con=DbUtil.getConnection();	
+	Statement st=con.createStatement();
+	ResultSet rs=st.executeQuery("select * from product");
+	while(rs.next())
+	{
+	System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));	
+	}
+	}}
+--------------------------------------------------
 
 
 
