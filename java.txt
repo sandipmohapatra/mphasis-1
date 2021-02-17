@@ -2974,11 +2974,59 @@ System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
 con.close();  
 }}  
 ------------------------------------------------------
+Assignment
+-------------------
+entity class
+-----------------------
+import java.util.Date;
+public class Product {
 
+	private int pId;
+	private String productName;
+	private Date dateOfManuf;
+	private Date dateOfExp;
+	private int quantity;
+	private double price;
 
+}
+-------------------------------------------------------
+DButil class
+------------------
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
+public class OracleDBConnection {
 
+	private static Connection connection;
 
+	public static Connection getConnection() throws ClassNotFoundException, SQLException {
+		Class.forName("oracle.jdbc.OracleDriver");
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "1234");
+		return connection;
+	}
+}
+-------------------------------------------------------
+main class
+-------------
+System.out.println("Enter the id");
+int id = scan.nextInt();
+System.out.println("Enter the product name");
+String pName = scan.next();
+System.out.println("Enter the Manufacture date");
+String mafDate = scan.next();
+System.out.println("Enter the expiry date");
+String expDate = scan.next();
+System.out.println("Enter the quantity");
+int qty = scan.nextInt();
+System.out.println("Enter the price");
+double price = scan.nextDouble();
+Connection con = OracleDBConnection.getConnection();
+System.out.println("1. Insert");
+System.out.println("2. Read");
+System.out.println("3. Exit");
+System.out.println("Please select the option..");
+--------------------------------------------------------------------------------------------
 
 
 
