@@ -3201,6 +3201,188 @@ fin=new FileInputStream(args[0]);
 
 ans:- TypeCast Error
 --------------------------------------------------------------------------
+Design Patterns
+----------------------
+We must use design pattern during the analysis and requirement phase of SDLC.
+It is used to provide solution or design  to the application .
+It provide transparency to the design of a application.
+It is divided into two category.
+1)Core java design patterns
+2)JEE design pattern
+-----------------------------------
+creational Design pattern
+---------------------------------------
+1)Factory
+2)Abstract Factory
+3)Singleton
+4)Prototype
+5)Builder
+Structural Design pattern
+-------------------------------------
+1)Adapter
+2)Bridge
+3)composite
+4)decorator
+5)Facade
+6)proxy
+Behavioral Design pattern
+--------------------------------------------
+1)command
+2)Interpreter
+3)Iterator
+4)Mediator
+5)Observer
+6)Template
+7)State
+------------------------------------------------------------------------
+singleton design pattern
+-------------------------------------------------
+It define a class tht has only one instance and provides a global point of access to it.
+It saves memory because object is not created again and again.only a single instance is reused again and again.
+To create a singleton class we need have static method or variables.
+We should have private constructor.so that only within the class object is created not outside.
+example:-creating a static method getConnection() and defining connection insde it and using it through out the application.
+------------------------------------------------------------------------
+Factory Design Pattern
+-------------------------------------
+It define an interface or abstract class for creating an object but let the subclass decide which class to instantiate.
+------------------------------
+What is an Algorithm?
+An algorithm is a process or a set of rules required to perform calculations or some other problem-solving operations especially by a computer. The formal definition of an algorithm is that it contains the finite set of instructions which are being carried in a specific order to perform the specific task.
+--------------------------------------------------------------------------------------------
+The data structure name indicates itself that organizing the data in memory.
+Types of Data Structures
+There are two types of data structures:
+-----------------------------------------------------
+Primitive data structure
+Non-primitive data structure
+Primitive Data structure
+----------------------------------------------
+The primitive data structures are primitive data types. The int, char, float, double, and pointer are the primitive data structures that can hold a single value.
+----------------------------------------------------------------
+Non-Primitive Data structure
+----------------------------------------
+The non-primitive data structure is divided into two types:
+------------------------------------------------------------------
+Linear data structure
+Non-linear data structure
+----------------------------------------
+Linear Data Structure
+----------------------------------------------
+The arrangement of data in a sequential manner is known as a linear data structure. The data structures used for this purpose are Arrays, Linked list, Stacks, and Queues. 
+--------------------------------------------------------------------
+The major or the common operations that can be performed on the data structures are:
+----------------------------------------------------------------------------------------------------------------------
+Searching: We can search for any element in a data structure.
+Sorting: We can sort the elements of a data structure either in an ascending or descending order.
+Insertion: We can also insert the new element in a data structure.
+Updation: We can also update the element, i.e., we can replace the element with another element.
+Deletion: We can also perform the delete operation to remove the element from the data structure.
+--------------------------------------------------------------
+public class BubbleSort {  
+    public static void main(String[] args) {  
+    int[] a = {10, 9, 7, 101, 23, 44, 12, 78, 34, 23};  
+    for(int i=0;i<10;i++)  
+    {  
+        for (int j=0;j<10;j++)  
+        {  
+            if(a[i]<a[j])  
+            {  
+                int temp = a[i];  
+                a[i]=a[j];  
+                a[j] = temp;   
+            }  
+        }  
+    }  
+    System.out.println("Printing Sorted List ...");  
+    for(int i=0;i<10;i++)  
+    {  
+        System.out.println(a[i]);  
+    }  
+}  
+}  
+--------------------------------------------------------------------
+public class SinglyLinkedList {  
+      
+    //Represent a node of the singly linked list  
+    class Node{  
+        int data;  
+        Node next;  
+          
+        public Node(int data) {  
+            this.data = data;  
+            this.next = null;  
+        }  
+    }  
+   
+    //Represent the head and tail of the singly linked list  
+    public Node head = null;  
+    public Node tail = null;  
+      
+    //addNode() will add a new node to the list  
+    public void addNode(int data) {  
+        //Create a new node  
+        Node newNode = new Node(data);  
+          
+        //Checks if the list is empty  
+        if(head == null) {  
+            //If list is empty, both head and tail will point to new node  
+            head = newNode;  
+            tail = newNode;  
+        }  
+        else {  
+            //newNode will be added after tail such that tail's next will point to newNode  
+            tail.next = newNode;  
+            //newNode will become new tail of the list  
+            tail = newNode;  
+        }  
+    }  
+      
+    //display() will display all the nodes present in the list  
+    public void display() {  
+        //Node current will point to head  
+        Node current = head;  
+          
+        if(head == null) {  
+            System.out.println("List is empty");  
+            return;  
+        }  
+        System.out.println("Nodes of singly linked list: ");  
+        while(current != null) {  
+            //Prints each node by incrementing pointer  
+            System.out.print(current.data + " ");  
+            current = current.next;  
+        }  
+        System.out.println();  
+    }  
+      
+    public static void main(String[] args) {  
+          
+        SinglyLinkedList sList = new SinglyLinkedList();  
+          
+        //Add nodes to the list  
+        sList.addNode(1);  
+        sList.addNode(2);  
+        sList.addNode(3);  
+        sList.addNode(4);  
+          
+        //Displays the nodes present in the list  
+        sList.display();  
+    }  
+}  
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
