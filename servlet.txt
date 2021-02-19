@@ -1,0 +1,57 @@
+<html>
+<body bgcolor=cyan>
+<form action="second" method="get">
+<h1><center>Student Registration Page</center></h1><hr>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20></tr>
+<tr><td>Enter your email<td><input type=text name=t2 size=20></tr>
+<tr><td>Enter your address<td><input type=text name=t3 size=20></tr>
+<tr><td>Enter your phone no<td><input type=text name=t4 size=20></tr>
+<tr><td><td><input type=submit value=submit></tr>
+</table>
+</form>
+</body>
+</html>
+----------------------------------------------------------
+import java.io.*;
+import javax.servlet.*;
+import java.sql.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/second")
+public class second extends GenericServlet
+{
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException 
+	{
+		PrintWriter pw=res.getWriter();		//to print on the browser the response
+		res.setContentType("text/html");
+		String name=req.getParameter("t1");
+		String email=req.getParameter("t2");
+		String address=req.getParameter("t3");
+		String phoneno=req.getParameter("t4");
+		pw.println("The name is "+name);
+		pw.println("<br>");
+		pw.println("The email is "+email);
+		pw.println("<br>");
+		pw.println("The address is "+address);
+		pw.println("<br>");
+		pw.println("The phoneno is "+phoneno);
+		try
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+			PreparedStatement st=con.prepareStatement("insert into mphasisstudx values(?,?,?,?)");
+			st.setString(1, name);
+			st.setString(2, email);
+			st.setString(3, address);
+			st.setString(4,phoneno);
+			st.execute();
+			System.out.println("row inserted");
+		}
+		catch(Exception ae)
+		{
+			ae.printStackTrace();
+		}
+			}
+}
+------------------------------------------------------------------------------
