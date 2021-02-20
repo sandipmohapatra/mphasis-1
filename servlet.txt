@@ -312,6 +312,163 @@ Uses:-
 ------
 1)to keep the track of no of concurrent clients using a web application.
 2)database need to be loaded on startup and saved while shut down.
+---------------------------------------------------------------------------------------------
+example-3
+--------------------
+<html>
+<body bgcolor=cyan>
+<form action="second" method="get">
+<h1><center>Student Registration Page</center></h1><hr>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size=20></tr>
+<tr><td>Enter your email<td><input type=text name=t2 size=20></tr>
+<tr><td>Enter your address<td><input type=text name=t3 size=20></tr>
+<tr><td>Enter your phone no<td><input type=text name=t4 size=20></tr>
+<tr><td><td><input type=submit value=Insert name=btn>
+<input type=submit value=Update name=btn>
+<input type=submit value=Delete name=btn>
+<input type=reset value=Reset name=btn>
+</tr>
+</table></form></body></html>
+-----------------------------------------------------------------------------------
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/second")
+public class second extends HttpServlet
+{
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+	{
+		PrintWriter pw=res.getWriter();		//to print on the browser the response
+		res.setContentType("text/html");
+		String name=req.getParameter("t1");
+		String email=req.getParameter("t2");
+		String address=req.getParameter("t3");
+		String phoneno=req.getParameter("t4");
+		String button=req.getParameter("btn");
+		pw.println("The name is "+name);
+		pw.println("<br>");
+		pw.println("The email is "+email);
+		pw.println("<br>");
+		pw.println("The address is "+address);
+		pw.println("<br>");
+		pw.println("The phoneno is "+phoneno);
+		
+				try
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+			if(button.equalsIgnoreCase("Insert"))
+				{
+			PreparedStatement st=con.prepareStatement("insert into mphasisstudx values(?,?,?,?)");
+			st.setString(1, name);
+			st.setString(2, email);
+			st.setString(3, address);
+			st.setString(4,phoneno);
+			st.execute();
+			System.out.println("row inserted");
+			res.sendRedirect("Login.html");
+				}
+			else if(button.equalsIgnoreCase("update"))
+			{
+		PreparedStatement st=con.prepareStatement("update mphasisstudx set email=?,address=?,phoneno=? where name=?");
+		
+		st.setString(1, email);
+		st.setString(2, address);
+		st.setString(3,phoneno);
+		st.setString(4, name);
+		st.execute();
+		System.out.println("row updated ");
+			}
+			else if(button.equalsIgnoreCase("delete"))
+			{
+		PreparedStatement st=con.prepareStatement("delete from mphasisstudx where name=?");
+		st.setString(1, name);
+		st.execute();
+		System.out.println("row deleted");
+			}
+			else
+			{
+				pw.println("Reset");				
+			}
+		}
+		catch(Exception ae)
+		{
+			ae.printStackTrace();
+		}
+			}
+}
+------------------------------------------------------------------------------------
+<html>
+<body bgcolor=cyan>
+<form action="Login" method="get">
+<h1><center>Student Login Page</center></h1><hr>
+<table>
+<tr><td>Enter Username<td><input type=text name=t1 size=20></tr>
+<tr><td>Enter Password<td><input type=password name=t2 size=20></tr>
+<tr><td><td><input type=submit value=Login></tr>
+</table></form></body>
+</html>
+------------------------------------------------------------------------
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/Login")
+public class Login extends HttpServlet
+{
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+	{
+		PrintWriter pw=res.getWriter();		//to print on the browser the response
+		res.setContentType("text/html");
+		String name=req.getParameter("t1");
+		String email=req.getParameter("t2");
+						try
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","1234");
+		PreparedStatement ps=con.prepareStatement("select * from mphasisstudx where name=? and email=?");
+		ps.setString(1,name);
+		ps.setString(2,email);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				res.sendRedirect("success.html");
+			}
+			res.sendRedirect("failure.html");
+		}
+				catch(Exception ae)
+				{
+				}
+	}
+				}
+----------------------------------------------------------------------
+success.html
+<h1>Login Success</h1>
+-------------------------
+failure.html
+<h1>Login Failure</h1>
+----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
