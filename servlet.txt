@@ -257,12 +257,15 @@ HTTP Servlet:-
 -----------------------
 1)SendRedirect() :-we can redirect the browser to a resource part of the same application.
 we can redirect another web application running through the same web container.
+
 2)RequestDispatcher :-
 it is an interface inside javax.servlet.*;
 it contains two methods :-
 1)forward(ServletRequest req,ServletResponse res)
 2)include(ServletRequest req,ServletResponse res)
 RequestDispatcher is to forward the request to other servlet or include the output of another servlet as a part of the response.
+
+
 To build a web application to be stateful that can remember the state of the client we use 
 1)hidden field 2)cookies 3)session object 4)url rewritting
 
@@ -781,7 +784,7 @@ menu ---->
 Registration         Purchase 	sales	Admin
 -------------------------------------------------------------------------------------
 1)Registration for customer/login 
-2)purchase for shop from different vendors
+2)purchase for shop from different vendors  (proid,name,quantity,cost)----------------CRUD
 3)sales to customers
 4)feedBack of customer
 ------------------------------------
@@ -1059,6 +1062,63 @@ action
 catch(Exception ae){}
 %>
 ------------------------------------------------------------
+example- RequestDispatcher
+---------------------------------------------------------------
+<html>
+<body bgcolor=yellow>
+<form action="firstservlet" method=get>
+<center><h1>LOGIN FORM</h1><hr><br><br>
+Enter user name<input type=text name=t1 size=20><br>
+Enter password<input type=text name=t2 size=20><br>
+<input type=submit value=login>
+</form>
+</body>
+</html>
+---------------------------------------------------
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/firstservlet")
+public class firstservlet extends HttpServlet
+{
+public void doGet(HttpServletRequest req,HttpServletResponse res)
+{try
+{
+res.setContentType("text/html");
+PrintWriter pw=res.getWriter();
+RequestDispatcher rd=req.getRequestDispatcher("secondServlet");
+rd.forward(req,res);
+pw.close();
+}
+catch(Exception ae)
+{}}}
+---------------------------------------------------------
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/secondServlet")
+public class secondServlet extends HttpServlet
+{
+public void doGet(HttpServletRequest req,HttpServletResponse res)
+{
+try
+{
+res.setContentType("text/html");
+PrintWriter pw=res.getWriter();
+String s=req.getParameter("t1");
+String t=req.getParameter("t2");
+pw.println("the user name is "+s);
+pw.println("the password is "+t);
+}
+catch(Exception ae)
+{} }}
+
+-----------------------------------------------------------------------------------
+
+
+
 
 
 
