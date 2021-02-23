@@ -898,7 +898,167 @@ Implicit object:-
 8)execption-- Exception
 9)pageContext - JspWriter
 ----------------------------------------------
+Example-1
+---------------------
 
+
+
+<% out.println("<h1><font color='red'>welcome to jsp page");%>
+ <%
+        int a=100,b=20,sum;
+        sum=a+b;
+        out.println("sum of two number is"+sum);
+        %>
+<h1>declaration Tag</h1>
+        <%!int sum,a,b=20;%>         <!-- global declaration -->
+        
+<%
+        a=10;
+        sum=a+b;
+        out.println("sum of number is"+sum+"<br>");
+ %>
+-----------------------------------------------------------------------------------------
+Expression tag
+<% =5+7 %>
+ <h1>Expression Tag</h1>
+        <%! int a,b,sum;%>
+        <%
+        a=10;
+        b=20;
+        sum=a+b;
+        %>
+         <font color="red" size="8">The sum of <%=a%>,<%=b%> is<%=sum%>
+</font>
+
+-----------------------------------------------------------------------------------------------
+ page directive
+------------------------------------------------------
+First.html
+------------------------
+<h1>number validation</h1>
+        <form action="jsp6.jsp">
+            Age=<input type="text" name="n1">
+            <input type="submit" value="submit">
+       </form>
+-----------------------------------------------------------------------
+jsp6.jsp
+----------------------
+<%@page errorPage="error.jsp" %>
+<%!String age1;
+int age;
+%>
+<% age1=request.getParameter("n1");
+   age=Integer.parseInt(age1);
+   out.println("The age ="+age);
+%>
+--------------------------------------------------------
+error.jsp
+-------------------
+<%@page isErrorPage="false"%>  <!-- This is not a error page-->
+<%out.println("Enter only the number");%>
+
+--------------------------------------------------------
+jsp8.jsp
+-----------------------
+<a href="First.html">age</a>
+     <%! String age;
+        int age1;
+        %>
+        <%
+        try{
+            age=request.getParameter("n1");
+            age1=Integer.parseInt(age);
+            out.println("AGE="+age1);
+           }
+        catch(Exception e)
+        {
+          out.println("please enter only the number");
+          %>
+           <jsp:include page="jsp8.jsp"></jsp:include>
+<%           }       %>
+-----------------------------------------------------------------------------------------
+
+ <h1>for loop</h1>
+        <select name="number">
+            <%
+            for(int i=0;i<100;i++)
+            {
+            %>
+            <option value="<%=i%> "><%=i%> </option>
+            <%
+            }
+            %>
+        </select>
+
+
+------------------------------------------------------------------------
+<h1>for loop</h1>
+        <select name="number">
+            <%int i; 
+           
+            for(i=0;i<100;i++)
+            {
+            %>
+            
+            <option value="<%=i%> "><%=i%> </option>
+           <% } %>
+        </select>
+-------------------------------------------------------------------------
+
+action
+
+<%! int a=3,b=10; %>
+        <%
+            if(a<b)
+            {
+              out.println("yes");
+         %>
+        <jsp:include page="ll.jsp"></jsp:include>
+        <% 
+           }
+          else {
+             out.println("no");
+        %>
+<jsp:forward page="kk.jsp"></jsp:forward>
+    <%       }    %>
+  
+---------------------------------------------------------
+<html>
+<body bgcolor=cyan>
+<form action=test.jsp>
+<table>
+<tr><td>Enter your name<td><input type=text name=t1 size =20><tr>
+<tr><td>Enter your address<td><input type=text name=t2 size =20><tr>
+<tr><td>Enter your password<td><input type=password name=t3 size =20><tr>
+<tr><td>Enter your Qualification<td><select name=t4>
+<option>Mca</option>
+<option>Bca</option>
+<option>Mcom</option>
+<option>MTech</option>
+<option>Diploma</option>
+<option>Bsc</option>
+</select></td><tr>
+<tr><td><td><input type=submit value=submit></tr>
+</table></form></body></html>
+--------------------------------------------
+
+
+<%@page  import="java.sql.*" %>
+        <%String x,y,z,p;%>
+        <%x=request.getParameter("t1");
+         y=request.getParameter("t2");
+         z=request.getParameter("t3");
+         p=request.getParameter("t4");
+        try
+         {  Class.forName("oracle.jdbc.driver.OracleDriver");
+          Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","1234");
+          PreparedStatement stmt=con.prepareStatement("insert into stude values(?,?,?,?)");
+          stmt.setString(1,x);          stmt.setString(2,y);
+          stmt.setString(3,z);          stmt.setString(4,p);
+          stmt.execute();}
+catch(Exception ae){}
+%>
+------------------------------------------------------------
 
 
 
