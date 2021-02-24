@@ -1116,7 +1116,53 @@ catch(Exception ae)
 {} }}
 
 -----------------------------------------------------------------------------------
+JspBean
+------------------
+<html>
+<head><center>UseBean</head><br><br><br>
+<form method="post" action="bean.jsp">
+UserName:<input type=text name=t1><br><br><br>
+Language:<input type=text name=t2><br><br><br>
+<input type=submit value="GetDetails">
+</form>
+</html>
+---------------------------------
+package mybean;
+public class srbean
+{
+String language;
+public void setLanguage(String la)
+{
+this.language=la;
+}
+public String getLanguage()
+{
+return language;
+}
+public String getComment()
+{
+if(language.equals("java"))
+return "The King Of Object Oriented Language";
+if(language.equals("dotnet"))
+return "MicroSoft Technology";
+else
+return "Soory No Details";
+}
+}
+-------------------------------------
+<jsp:useBean id="sr" scope="page" class="mybean.srbean" />
+<html>
+<head>
+<body>
+<%! String s;%>
+<% s=request.getParameter("t2");%>
+<jsp:setProperty name="sr" property="language" value="<%=s%>" />
+<jsp:getProperty name="sr" property="language" />
+<jsp:getProperty name="sr" property="comment" />
+</body>
+</html>
 
+----------------------------------------------------------------
 
 
 
