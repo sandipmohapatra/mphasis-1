@@ -1,0 +1,27 @@
+Maven 
+Maven is a powerful project management tool that is based on POM (project object model). It is used for projects build, dependency and documentation.
+
+It simplifies the build process like ANT. But it is too much advanced than ANT.
+
+Current version of Maven is 3.
+
+problem without Maven
+
+1) Adding set of Jars in each project: In case of struts, spring, hibernate frameworks, we need to add set of jar files in each project. It include all the dependencies of jars also.
+
+2) Creating the right project structure: We must create the right project structure in servlet, struts etc, otherwise it will not be executed.
+
+3) Building and Deploying the project: We must have to build and deploy the project so that it may work.
+
+Maven simplifies the above  problems. 
+
+It makes a project easy to build
+It provides uniform build process (maven project can be shared by all the maven projects)
+It provides project information (log document, cross referenced sources, mailing list, dependency list, unit test reports etc.)
+It is easy to migrate for new features of Maven
+Apache Maven helps to manage
+
+Generates source code (if auto-generated code is used)
+Generates documentation from source code
+Compiles source code
+Packages compiled code into JAR of ZIP file
