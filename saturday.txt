@@ -272,8 +272,31 @@ public class TestCase2 {
   
 }  
 ------------------------------------------------------------------------------------
+To test the full class and give the failure Report.
+--------------------------------------------------------------------------------
+import org.junit.runner.JUnitCore; 
+import org.junit.runner.Result;
+ import org.junit.runner.notification.Failure;  
+public class TestRunner2
+ {  
+  public static void main(String[] args)
+ {     
+  Result result = JUnitCore.runClasses(TestAssertions.class); 
+      for (Failure failure : result.getFailures()) 
+{         
+ System.out.println(failure.toString());  
+     }     
+  System.out.println(result.wasSuccessful());  
+  } 
+}  
 
+/*Run the tests contained in classes. Write feedback while the tests are running and write stack traces 
+for all failed tests after all tests complete. 
+This is similar to main(String []), but intended to be used programmatically.
+Parameters:classes Classes in which to find tests
+Returns:a Result describing the details of the test run and the failed tests.*/
 
+----------------------------------------------------------------------------
 
 
 
