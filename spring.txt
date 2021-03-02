@@ -1,0 +1,62 @@
+spring MVC+ hibernate integration
+-----------------------------------------
+package :-
+1)Bean :- EmployeeBean.java
+id,name,salary,designation
+getter(),setter()
+----------------------------------------------
+2)controller:-EmployeeController.java
+@Controller :- stereo type annotaion to know that it is a controller class.
+@Autowired//(this controller class will depend upon another class like has a relationship)
+EmployeeService employeeservice; 
+@RequestMapping("\save");
+@RequestMapping("\update");
+@RequestMapping("\delete");
+@RequestMapping("\list");
+---------------------------------------------------------------------------------------------------------------
+EmployeeDao it is a interface
+3)DAO :- It is a interface having abstract methods.
+addEmployee(Employee employee);
+List<Employee> listemployee();
+deleteEmployee(int empid);
+Employee getEmployee(int empid);
+----------------------------------------------------------------------------------------
+DAOImpl :-
+will be having body for the abstract() of EmployeeDao using all the hibernate session methods
+like to save :- session.save&update()
+to delete :- session.delete()
+to update :- session.update()
+to fetch data :- session.get()  
+EmployeeDaoImpl implements EmployeeDao
+@Repository("employeeDao") //depend for database transactions
+@Autowired
+SessionFactory sessionFactory;
+Then we will have the implementation methods
+addEmployee(Employee emp) {session.save&update}
+List {session.get}
+deleteEmployee(Employee emp) {session.delete}
+getEmployee(Employee emp) {session.critaria}
+------------------------------------------------------------------------------------------------
+service :- It is for spring we will have employeeService .it is a interface.same as EmployeeDao.
+EmployeeService <=> EmloyeeDao
+-----------------------------------------------------------------
+EmployeeServiceImp <=>EmployeeDaoImpl
+@service("employeeService");
+@Autowired
+EmployeeDao employeeDao;
+@Transactional(-,-,-)  <-rollback and commit
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
