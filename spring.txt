@@ -46,7 +46,46 @@ EmployeeServiceImp <=>EmployeeDaoImpl
 EmployeeDao employeeDao;
 @Transactional(-,-,-)  <-rollback and commit
 --------------------------------------------------------------------------------
-
+JSTL
+-------------
+<form:form>
+      <table>
+          <tr>
+              <td>First Name:</td>
+              <td><form:input path="firstName" /></td>
+          </tr>
+          <tr>
+              <td>Last Name:</td>
+              <td><form:input path="lastName" /></td>
+          </tr>
+          <tr>
+              <td colspan="2">
+                  <input type="submit" value="Save Changes" />
+              </td>
+          </tr>
+      </table>
+  </form:form>
+--------------------------------------------------------------
+HTML
+---------------
+<form method="POST">
+      <table>
+        <tr>
+            <td>First Name:</td>
+            <td><input name="firstName" type="text" value="Harry"/></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input name="lastName" type="text" value="Potter"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+              <input type="submit" value="Save Changes" />
+            </td>
+        </tr>
+      </table>
+  </form>
+-----------------------------------------------------------------------
 
 
 
