@@ -7,7 +7,7 @@ getter(),setter()
 ----------------------------------------------
 2)controller:-EmployeeController.java
 @Controller :- stereo type annotaion to know that it is a controller class.
-@Autowired//(this controller class will depend upon another class like has a relationship)
+@Autowired//(this controller class will depend upon another class like has-a relationship)
 EmployeeService employeeservice; 
 @RequestMapping("\save");
 @RequestMapping("\update");
@@ -29,6 +29,7 @@ to update :- session.update()
 to fetch data :- session.get()  
 EmployeeDaoImpl implements EmployeeDao
 @Repository("employeeDao") //depend for database transactions
+//Spring @Repository annotation is used to indicate that the class provides the mechanism for storage, retrieval, //search, update and delete operation on objects.
 @Autowired
 SessionFactory sessionFactory;
 Then we will have the implementation methods
@@ -47,7 +48,7 @@ EmployeeDao employeeDao;
 @Transactional(-,-,-)  <-rollback and commit
 --------------------------------------------------------------------------------
 JSTL
--------------
+-----------
 <form:form>
       <table>
           <tr>
@@ -65,9 +66,7 @@ JSTL
           </tr>
       </table>
   </form:form>
---------------------------------------------------------------
-HTML
----------------
+---------------------------------------------------------------------------------------
 <form method="POST">
       <table>
         <tr>
@@ -85,12 +84,31 @@ HTML
         </tr>
       </table>
   </form>
------------------------------------------------------------------------
-
-
-
-
-
+---------------------------------------------------------------------------
+ try (Session session = getSessionFactory().openSession()) {
+   tx = session.beginTransaction();
+   Criteria criteria = session.createCriteria(persistentClass);
+   criteria.add(Restrictions.eq("name", name));
+----------------------------------------------------------------------------------------------------
+private void myMethod () {
+ Session s =SessionFactory sessionFactory;
+sessionFactory.openSession()
+-------------------------------------------------------------------------------
+SessionFactory sessionFactory;
+sessionFactory.getCurrentSession()
+--------------------------------------------------------------------------------------------
+Session session = getSessionFactory().openSession()) {
+   tx = session.beginTransaction();
+   Criteria criteria = session.createCriteria(persistentClass);
+   criteria.add(Restrictions.eq("name", name));
+--------------------------------------------------------------------------------------------------------------------
+return (List<Employee>) sessionFactory.getCurrentSession().createCriteria(Employee.class).list();
+------------------------------------------------------------------
+example of a criteria query is one, which will simply return every object that corresponds to the Employee class.
+------------------------------------------------------------------------------------------------------------------------------------------
+Criteria cr = session.createCriteria(Employee.class);
+List results = cr.list();
+----------------------------------------------------------------------------------------
 
 
 
