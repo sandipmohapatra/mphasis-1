@@ -65,7 +65,17 @@ query methods() :-
 6)queryForObject(sql);
 7)queryForMap(sql);
 8)queryForList(sql);
+-------------------------------------------------------
+We can execute parameterized query using Spring JdbcTemplate by the help of execute() method of JdbcTemplate class. To use parameterized query, we pass the instance of PreparedStatementCallback in the execute method.
 
+Syntax of execute method to use parameterized query
+public T execute(String sql,PreparedStatementCallback<T>);  
+
+Method of PreparedStatementCallback interface
+It has only one method doInPreparedStatement. Syntax of the method is given below:
+
+public T doInPreparedStatement(PreparedStatement ps)throws SQLException, DataAccessException  
+-----------------------------------------------------------------------------------------------------------------------
 
 ResultSetExtractor Interface
 -------------------------------------------------
