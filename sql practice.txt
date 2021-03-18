@@ -1,0 +1,26 @@
+1)DBMS-RDBMS and Cord rules ----ans)6
+2)remove transient dependency ----ans)3NF
+3)ans) all keys(5 keys) -----tik all
+4)'A_B'    -> ans)  A'_B  execpt   '/'
+6)select to_char (day,month,yyyy) from dual;
+7)where ---only rows
+8)having ----groups
+9)insert,update,delete------------DML
+10)select  * from emp where dept_id is null;
+11)min/max  (date)
+12)types of entity - dependent and independent
+13)sql server support---- database design,annalysis,report
+14)components of sqlserver -------------ans) all 4  (tik all 4 options) 
+15)we can use % in like,not like 
+16)object oriented donot follow M:M relationship
+17)RDBMS consist of tables.
+row is called ---tupple
+column is called ---attribute
+18)privlages of views -- can do in own schema
+19)An entity in A is associated with all the entiry in B  ------------1:M,M:1,M:M
+20)commission is null, calculation should be zero if is null.(ans :NVL)
+21)what is normalization.
+i)reduce redundency
+ii)reduce disk size.
+22)tupple value may exist but unkown or may not exists =Null
+23)what type data is in DBMS ----STRUCTURE,UNSTRUCTURE,RELATIONAL 
